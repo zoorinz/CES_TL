@@ -1,23 +1,28 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Models
+
+@{
+    ViewBag.Title = "Route Calculator/Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Welcome to TL -- CES test</h1>
-</div>
-
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started test</h2>
-        <p>
-            We need a route calculator.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        @*@{
+            List<City> listItems= new List<City>();
+            listItems.Add(new City
+            {
+                Name = "Bucharest"
+            });
+            listItems.Add(new City
+            {
+                Name = "Copenhagen"
+            });
+            listItems.Add(new City
+            {
+                Name = "Amsterdam"
+            });
+        }
+
+        @Html.DropDownListFor(model => model.tipo, listItems, "-- Select Source City --")*@
     </div>
-    <div class="col-md-4">
-        <p>lalala</p>
-    </div>
-    <div class="col-md-4">
-        <h1>lalala</h1>
-    </div>
+
 </div>

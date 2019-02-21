@@ -17,11 +17,6 @@ namespace Models
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-
-        [ForeignKey("DestinationCity"), Required]
-        public int DestinationCityRefId { get; set; }
-        public Parcel DestinationCity { get; set; }
-
     }
 
 

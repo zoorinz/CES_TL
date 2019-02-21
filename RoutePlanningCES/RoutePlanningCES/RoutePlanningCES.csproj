@@ -193,6 +193,7 @@
     <Content Include="Content\Images\logo_1.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styling\nav.css" />
+    <Content Include="Content\Styling\result.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

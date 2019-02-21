@@ -18,7 +18,9 @@ namespace Models
         private User() { }
 
         public int ID { get; set; }
+        [Required]
         public string Username { get; private set; }
+        [Required]
         public string Password { get; private set; }
         public string eMail { get; set; }
 

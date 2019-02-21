@@ -153,6 +153,7 @@
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\Dimension.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\GraphFabric.cs" />

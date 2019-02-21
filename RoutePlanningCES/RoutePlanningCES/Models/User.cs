@@ -22,10 +22,5 @@ namespace Models
         public string Password { get; private set; }
         public string eMail { get; set; }
 
-        //Foreign key for Parcel
-        [ForeignKey("Users"), Required]
-        public int UserRefId { get; set; }
-        public Parcel Users { get; set; }
-
     }
 }

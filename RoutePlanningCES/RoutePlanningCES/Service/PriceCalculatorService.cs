@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Models;
+using RoutePlanningCES.SharedConstants;
 
 namespace Service
 {
@@ -9,9 +10,13 @@ namespace Service
         {
             foreach (var edge in edges)
             {
-                if (true == true)
+                if (edge.Company.Name == Constants.CompanyTS)
                 {
                     var segments = edge.Duration / (4 * 60);
+                    var price = 0;
+                    var segmentPrice = Constants.Baseprice;
+
+
                 }
             }
             return 1;

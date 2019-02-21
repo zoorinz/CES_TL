@@ -5,17 +5,10 @@ using System.Web;
 using DAL;
 using Models;
 
-namespace RoutePlanningCES.DAL
+namespace DAL
 {
-    public class TLInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<TLContext>
+    public class TLInitializer
     {
-        protected override void Seed(TLContext context)
-        {
-            PopulateCity(context);
-            PopulateEdge(context);
-            PopulateType(context);
-        }
-
         private void PopulateCity(TLContext context)
         {
             List<City> cities = new List<City>();
@@ -35,6 +28,15 @@ namespace RoutePlanningCES.DAL
             List<Models.Type> edges = new List<Models.Type>();
             edges.ForEach(t => context.Type.Add(t));
             context.SaveChanges();
+        }
+
+        public void PopulateDatabase()
+        {
+            using (var db = new TLContext()) {
+                this.PopulateCity(db);
+                this.PopulateEdge(db);
+                this.PopulateType(db);
+            }
         }
     }
 }

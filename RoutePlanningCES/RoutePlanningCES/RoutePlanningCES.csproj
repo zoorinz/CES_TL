@@ -156,6 +156,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Dimension.cs" />
     <Compile Include="Models\Edge.cs" />
+    <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\Parcel.cs" />
     <Compile Include="Models\ParcelTypes.cs" />

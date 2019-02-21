@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,9 +12,16 @@ namespace Models
         {
             this.Name = name;
         }
+
         public CityNames Name { get; private set; }
         public uint CityId { get { return (uint)Name; } }
+
+        [Key]
+        public int ID { get; set; }
+        public string name { get; set; }
+
     }
+
 
      
 }

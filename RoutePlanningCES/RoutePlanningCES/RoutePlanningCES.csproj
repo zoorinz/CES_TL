@@ -164,7 +164,9 @@
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IPriceCalculatorService.cs" />
     <Compile Include="Service\IRouteCalculatorService.cs" />
+    <Compile Include="Service\PriceCalculatorService.cs" />
     <Compile Include="Service\RouteCalculatorService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Models
 {
@@ -39,7 +40,7 @@ namespace Models
         public int DestinationCityRefId { get; set; }
         public City DestinationCity { get; set; }
 
-        public ICollection<Type> acceptedTypes { get; set; }
+        public ICollection<Type> AcceptedTypes { get; set; }
 
         public bool Equals(Edge other)
         {

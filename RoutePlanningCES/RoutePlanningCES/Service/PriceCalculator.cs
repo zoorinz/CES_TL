@@ -10,6 +10,7 @@ namespace RoutePlanningCES.Service
     {
         public int CalculatePrice()
         {
+            
             return 1;
         }
     }

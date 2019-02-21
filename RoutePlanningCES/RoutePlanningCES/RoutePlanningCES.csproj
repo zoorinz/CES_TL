@@ -188,6 +188,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Algorithm\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

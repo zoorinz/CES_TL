@@ -162,7 +162,6 @@
     <Compile Include="Models\TestRoute.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Database\DBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IMappingService.cs" />
     <Compile Include="Service\IPriceCalculatorService.cs" />

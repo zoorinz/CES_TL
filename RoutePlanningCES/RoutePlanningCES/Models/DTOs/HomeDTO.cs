@@ -10,6 +10,6 @@ namespace RoutePlanningCES.Models.DTOs
         public List<CityDTO> SourceCitites { get; set; }
         public List<CityDTO> DestinationCitites { get; set; }
 
-        public List<Type> ParcelTypes { get; set; }
+        public List<ParcelTypeDTO> ParcelTypes { get; set; }
     }
 }

@@ -15,9 +15,8 @@ namespace RoutePlanningCES.Models
             addVertices(graph, vertices);
 
             foreach (var edge in edges)
-            {
                 graph.Connect((uint)edge.SourceCityRefId, (uint)edge.DestinationCityRefId, (int)edge.price, costDescription);
-            }
+
             return graph;
         }
 
@@ -27,18 +26,15 @@ namespace RoutePlanningCES.Models
             addVertices(graph, vertices);
 
             foreach (var edge in edges)
-            {
                 graph.Connect((uint)edge.SourceCityRefId, (uint)edge.DestinationCityRefId, (int)edge.duration, costDescription);
-            }
+
             return graph;
         }
 
         private static Graph<City, string> addVertices(Graph<City, string> graph, IList<City> vertices)
         {
             foreach (var vertice in vertices)
-            {
                 graph.AddNode(vertice);
-            }
             return graph;
         }
     }

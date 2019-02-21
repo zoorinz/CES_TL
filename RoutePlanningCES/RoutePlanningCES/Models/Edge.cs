@@ -11,7 +11,6 @@ namespace Models
     {
         [Key]
         public int ID { get; set; }
-        
         public float duration { get; set; }
         public float price { get; set; }
         public float maxWeight { get; set; }

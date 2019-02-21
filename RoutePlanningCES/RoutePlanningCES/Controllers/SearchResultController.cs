@@ -11,7 +11,34 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult SearchResult(int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length)
         {
-            var result = new SearchResultDTO();
+            var cPath = new PathDTO()
+            {
+                Cities = new List<CityDTO>(),
+                Duration = 42.1F,
+                Price = 42.1F
+            };
+
+            var fPath = new PathDTO()
+            {
+                Cities = new List<CityDTO>(),
+                Duration = 42.2F,
+                Price = 42.2F
+            };
+
+            var bPath = new PathDTO()
+            {
+                Cities = new List<CityDTO>(),
+                Duration = 42.3F,
+                Price = 42.3F
+            };
+
+            var result = new SearchResultDTO
+            {
+                Cheapest = cPath,
+                Fastest = fPath,
+                Best = bPath
+            };
+
             return View(result);
         }
     }

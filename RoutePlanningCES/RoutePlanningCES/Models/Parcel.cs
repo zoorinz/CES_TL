@@ -17,24 +17,18 @@ namespace Models
         public int Dimension { get; set; }
 
 
-        [ForeignKey("DestinationCity"), Required]
-        public int DestinationCityRefId { get; set; }
         public City DestinationCity { get; set; }
 
-        [ForeignKey("SourceCity"), Required]
-        public int SourceCityRefId { get; set; }
+        
         public City SourceCity { get; set; }
 
-        [ForeignKey("Dimensions"), Required]
-        public int DimensionRefId { get; set; }
+        
         public City Dimensions { get; set; }
 
-        [ForeignKey("Recivers"), Required]
-        public int ReciverRefId { get; set; }
+        
         public User Reciver { get; set; }
 
-        [ForeignKey("Senders"), Required]
-        public int SenderRefId { get; set; }
+        
         public User Sender { get; set; }
 
         public virtual ICollection<Type> Type { get; set; }

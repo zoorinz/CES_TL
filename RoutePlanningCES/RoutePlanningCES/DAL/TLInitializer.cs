@@ -12,6 +12,7 @@ namespace DAL
         private void PopulateCity(TLContext context)
         {
             List<City> cities = new List<City>();
+            cities.Add(new City("test"));
             cities.ForEach(c => context.City.Add(c));
             context.SaveChanges();
         }

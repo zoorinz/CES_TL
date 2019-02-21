@@ -5,7 +5,7 @@ using Models;
 namespace DAL
 {
  public class TLContext : DbContext {
-        public TLContext() : base("")
+        public TLContext() : base("TLContext")
         {
             
         }

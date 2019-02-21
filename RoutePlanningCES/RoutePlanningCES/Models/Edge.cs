@@ -23,9 +23,7 @@ namespace Models
             this.Price = price;
             this.MaxWeight = maxWeight;
             this.SourceCity = source;
-            this.SourceCityRefId = source.ID;
             this.DestinationCity = destination;
-            this.DestinationCityRefId = destination.ID;
         }
 
         [Key]
@@ -35,16 +33,13 @@ namespace Models
         public float MaxWeight { get; set; }
 
         //Foreign keys
-        [ForeignKey("Company"), Required]
-        public int CompanyRefId { get; set; }
+        
         public Company Company { get; set; }
 
-        [ForeignKey("SourceCity"), Required]
-        public int SourceCityRefId { get; set; }
+        
         public City SourceCity { get; set; }
 
-        [ForeignKey("DestinationCity"), Required]
-        public int DestinationCityRefId { get; set; }
+        
         public City DestinationCity { get; set; }
 
         public ICollection<Type> AcceptedTypes { get; set; }

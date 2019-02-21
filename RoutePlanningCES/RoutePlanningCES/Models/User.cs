@@ -15,10 +15,8 @@ namespace Models
             this.Password = password;
         }
 
-
-
         public int ID { get; set; }
-       public string Username { get; private set; }
+        public string Username { get; private set; }
         public string Password { get; private set; }
         public string eMail { get; set; }
 

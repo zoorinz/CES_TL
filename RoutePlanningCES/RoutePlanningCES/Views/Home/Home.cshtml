@@ -4,6 +4,7 @@
     ViewBag.Title = "Route Calculator/Home Page";
 }
 
+<form action="SearchResult/SearchResult" method="post">
 <div class="row search-area">
     <div class="col-md-5">
         <div class="form-group">
@@ -63,7 +64,7 @@
         </div>
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-default calculate-route">Calculate route</button>
+        <button type="button" onclick="SearchResult(SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length)" class="btn btn-default calculate-route">Calculate route</button>
     </div>
 </div>
-
+</form>

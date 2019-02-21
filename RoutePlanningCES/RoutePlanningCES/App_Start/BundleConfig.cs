@@ -26,7 +26,7 @@ namespace RoutePlanningCES
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-grid.css",
                       "~/Content/site.css",
-                      "~/Content/Styles/navigation.css"));
+                      "~/Content/Styling/nav.css"));
         }
     }
 }

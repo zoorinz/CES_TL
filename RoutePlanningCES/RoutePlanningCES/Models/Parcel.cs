@@ -8,12 +8,11 @@ namespace Models
     {
         [Key]
         public int ParcelId { get; set; }
-
-        public int sourceCity { get; set; }
-        public int destinationCity { get; set; }
-        public int sender { get; set; }
-        public  int reciver { get; set; }
-        public int dimension { get; set; }
+        public int SourceCity { get; set; }
+        public int DestinationCity { get; set; }
+        public int Sender { get; set; }
+        public int Reciver { get; set; }
+        public int Dimension { get; set; }
 
         public ICollection<User> Users { get; set; }
     }

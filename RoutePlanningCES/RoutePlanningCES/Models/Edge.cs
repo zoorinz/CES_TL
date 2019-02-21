@@ -8,12 +8,12 @@ namespace Models
     public class Edge
     {
         public int ID { get; set; }
-        public int sourceCity { get; set; }
-        public int destinationCity { get; set; }
-        public float duration { get; set; }
-        public float price { get; set; }
-        public float maxWeight { get; set; }
-        public  int company { get; set; }
+        public int SourceCity { get; set; }
+        public int DestinationCity { get; set; }
+        public float Duration { get; set; }
+        public float Price { get; set; }
+        public float MaxWeight { get; set; }
+        public  int Company { get; set; }
 
     }
 }

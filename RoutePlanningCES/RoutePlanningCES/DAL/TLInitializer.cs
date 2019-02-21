@@ -7,10 +7,16 @@ using Models;
 
 namespace DAL
 {
-    public class TLInitializer
+    public class TLInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<TLContext>
     {
-        private void PopulateCity(TLContext context)
+        protected override void Seed(TLContext context)
         {
+            this.PopulateCity(context);
+            this.PopulateEdge(context);
+            this.PopulateType(context);
+        }
+
+        private void PopulateCity(TLContext context) {
             List<City> cities = new List<City>();
             cities.Add(new City("test"));
             cities.ForEach(c => context.City.Add(c));

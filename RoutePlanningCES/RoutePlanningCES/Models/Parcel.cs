@@ -14,23 +14,11 @@ namespace Models
         }
         [Key]
         public int Id { get; set; }
-        public int Dimension { get; set; }
-
-
         public City DestinationCity { get; set; }
-
-        
         public City SourceCity { get; set; }
-
-        
-        public City Dimensions { get; set; }
-
-        
+        public Dimension Dimensions { get; set; }
         public User Reciver { get; set; }
-
-        
         public User Sender { get; set; }
-
         public virtual ICollection<Type> Type { get; set; }
     }
 }

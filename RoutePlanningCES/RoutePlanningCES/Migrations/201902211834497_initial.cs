@@ -70,7 +70,6 @@ namespace RoutePlanningCES.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Dimension = c.Int(nullable: false),
                         DestinationCity_ID = c.Int(),
                         Dimensions_ID = c.Int(),
                         Reciver_ID = c.Int(),
@@ -79,7 +78,7 @@ namespace RoutePlanningCES.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.City", t => t.DestinationCity_ID)
-                .ForeignKey("dbo.City", t => t.Dimensions_ID)
+                .ForeignKey("dbo.Dimension", t => t.Dimensions_ID)
                 .ForeignKey("dbo.User", t => t.Reciver_ID)
                 .ForeignKey("dbo.User", t => t.Sender_ID)
                 .ForeignKey("dbo.City", t => t.SourceCity_ID)
@@ -130,18 +129,18 @@ namespace RoutePlanningCES.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Edge", "SourceCity_ID", "dbo.City");
-            DropForeignKey("dbo.Edge", "DestinationCity_ID", "dbo.City");
-            DropForeignKey("dbo.Edge", "Company_ID", "dbo.Company");
             DropForeignKey("dbo.ParcelType", "Type_ID", "dbo.Type");
             DropForeignKey("dbo.ParcelType", "Parcel_Id", "dbo.Parcel");
             DropForeignKey("dbo.Parcel", "SourceCity_ID", "dbo.City");
             DropForeignKey("dbo.Parcel", "Sender_ID", "dbo.User");
             DropForeignKey("dbo.Parcel", "Reciver_ID", "dbo.User");
-            DropForeignKey("dbo.Parcel", "Dimensions_ID", "dbo.City");
+            DropForeignKey("dbo.Parcel", "Dimensions_ID", "dbo.Dimension");
             DropForeignKey("dbo.Parcel", "DestinationCity_ID", "dbo.City");
             DropForeignKey("dbo.TypeEdge", "Edge_ID", "dbo.Edge");
             DropForeignKey("dbo.TypeEdge", "Type_ID", "dbo.Type");
+            DropForeignKey("dbo.Edge", "SourceCity_ID", "dbo.City");
+            DropForeignKey("dbo.Edge", "DestinationCity_ID", "dbo.City");
+            DropForeignKey("dbo.Edge", "Company_ID", "dbo.Company");
             DropIndex("dbo.ParcelType", new[] { "Type_ID" });
             DropIndex("dbo.ParcelType", new[] { "Parcel_Id" });
             DropIndex("dbo.TypeEdge", new[] { "Edge_ID" });

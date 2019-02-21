@@ -10,14 +10,15 @@ namespace Models
         {
             this.Name = name;
             this.Parcel = new HashSet<Parcel>();
-            this.Edges = new HashSet<Edge>();
+            this.Edge = new HashSet<Edge>();
         }
 
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
 
+
         public virtual ICollection<Parcel> Parcel { get; set; }
-        public virtual ICollection<Edge> Edges { get; set; }
+        public virtual ICollection<Edge> Edge { get; set; }
     }
 }

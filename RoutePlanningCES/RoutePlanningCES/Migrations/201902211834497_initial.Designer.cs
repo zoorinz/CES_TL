@@ -13,7 +13,7 @@ namespace RoutePlanningCES.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902211732360_initial"; }
+            get { return "201902211834497_initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -13,7 +13,7 @@ namespace Models
         public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes) : 
             this(duration, price, maxWeight, source, destination)
         {
-            this.AcceptedTypes = acceptedTypes;
+            this.Type = acceptedTypes;
             this.Company = company;
         }
 
@@ -35,14 +35,9 @@ namespace Models
         //Foreign keys
         
         public Company Company { get; set; }
-
-        
         public City SourceCity { get; set; }
-
-        
         public City DestinationCity { get; set; }
-
-        public ICollection<Type> AcceptedTypes { get; set; }
+        public ICollection<Type> Type { get; set; }
 
         public bool Equals(Edge other)
         {

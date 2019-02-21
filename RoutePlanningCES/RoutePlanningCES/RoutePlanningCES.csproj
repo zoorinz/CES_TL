@@ -155,9 +155,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902211732360_initial.cs" />
-    <Compile Include="Migrations\201902211732360_initial.Designer.cs">
-      <DependentUpon>201902211732360_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201902211834497_initial.cs" />
+    <Compile Include="Migrations\201902211834497_initial.Designer.cs">
+      <DependentUpon>201902211834497_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cities.cs" />
@@ -241,8 +241,11 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902211732360_initial.resx">
-      <DependentUpon>201902211732360_initial.cs</DependentUpon>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902211834497_initial.resx">
+      <DependentUpon>201902211834497_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

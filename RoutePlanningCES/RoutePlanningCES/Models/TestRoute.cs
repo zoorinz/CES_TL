@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication.Models
+namespace Models
 {
-    public enum CityNames { tanger = 1, };
+    public class TestRoute
+    {
+    }
 }

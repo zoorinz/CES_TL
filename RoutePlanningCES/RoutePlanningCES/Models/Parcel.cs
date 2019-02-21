@@ -34,19 +34,6 @@ namespace Models
         public int SenderRefId { get; set; }
         public User Senders { get; set; }
 
-        [ForeignKey("ParcelTypes"), Required]
-        public int ParcelRefId { get; set; }
-        public ParcelTypes ParcelTypes { get; set; }
-
-
-
-
-
-
-
-
-
-
         public virtual ICollection<User> Users { get; set; }
     }
 }

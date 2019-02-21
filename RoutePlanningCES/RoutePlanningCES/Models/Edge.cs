@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication.Service
+namespace WebApp.Models
 {
-    public class RouteCalculatorService
+    public class Edge
     {
-        
+        public Edge()
+        {
+
+        }
     }
 }

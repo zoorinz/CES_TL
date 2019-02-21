@@ -148,7 +148,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ExposedConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DAL\TLInitializer.cs" />
@@ -168,14 +167,11 @@
     <Compile Include="Models\DTOs\HomeDTO.cs" />
     <Compile Include="Models\DTOs\ParcelTypeDTO.cs" />
     <Compile Include="Models\Edge.cs" />
-    <Compile Include="Models\ExposedConnection.cs" />
     <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\Parcel.cs" />
-    <Compile Include="Models\RoutePlanningCESContext.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IPriceCalculatorService.cs" />
     <Compile Include="Service\IRouteCalculatorService.cs" />
     <Compile Include="Service\MappingService.cs" />
     <Compile Include="Service\PriceCalculatorService.cs" />
@@ -191,22 +187,15 @@
     <Content Include="Content\Images\logo_1.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styling\nav.css" />
-    <Content Include="Content\Styling\search.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -218,8 +207,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\ours.js" />
-    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())  
+{  
+    <div class="bs-example" style="border:2px solid gray;">  
+  
+        <div class="form-group centerlook">  
+            <h1> Login </h1>  
+        </div>  
+        <div class="form-group centerlook">  
+            <label>User Name: </label>  
+        </div>  
+        <div class="form-group centerlook">  
+            <label>Password:</label> 
+  
+        </div>  
+        <div class="form-group error">  
+            @if (@ViewBag.Failedcount != null)  
+            {  
+  
+                <label> Failed Attempt count is: @ViewBag.Failedcount</label>  
+            }  
+  
+            @if (@ViewBag.NotValidUser != null)  
+            {  
+  
+                <label> @ViewBag.NotValidUser</label>  
+            }  
+        </div>  
+        <div class="loginbtn">  
+  
+            <input type="submit" value="Login" class="btn btn-primary" />  
+  
+        </div>  
+    </div>  
+}  

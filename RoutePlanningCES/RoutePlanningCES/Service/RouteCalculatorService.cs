@@ -7,9 +7,8 @@ namespace Service
 {
     public class RouteCalculatorService
     {
-        static void main(string[] args)
+        public RouteCalculatorService()
         {
-            Console.WriteLine("asd");
         }
     }
 }

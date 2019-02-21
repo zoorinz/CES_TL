@@ -29,7 +29,7 @@ namespace Models
         public int DestinationCityRefId { get; set; }
         public City DestinationCity { get; set; }
 
-        public ICollection<Type> acceptedTypes { get; set; }
+        public ICollection<Type> AcceptedTypes { get; set; }
 
         public bool Equals(Edge other)
         {

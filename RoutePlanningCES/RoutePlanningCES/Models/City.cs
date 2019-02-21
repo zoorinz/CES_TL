@@ -8,17 +8,14 @@ namespace Models
 {
     public class City
     {
-        public City(CityNames name)
+        public City(string name)
         {
             this.Name = name;
         }
 
-        public CityNames Name { get; private set; }
-        public uint CityId { get { return (uint)Name; } }
-
         [Key]
-        public int CityID { get; set; }
-        public string name { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
 
     }
 

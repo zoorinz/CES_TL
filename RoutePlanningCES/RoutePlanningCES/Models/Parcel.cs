@@ -8,13 +8,10 @@ namespace Models
     public class Parcel
     {
         [Key]
-        public int Id { get; set; }
-        public int sourceCity { get; set; }
-        public int destinationCity { get; set; }
-        public int sender { get; set; }
-        public  int reciver { get; set; }
-        public int dimension { get; set; }
-
+        public int ParcelId { get; set; }
+        public int Sender { get; set; }
+        public int Reciver { get; set; }
+        public int Dimension { get; set; }
 
 
         [ForeignKey("DestinationCity"), Required]
@@ -53,7 +50,3 @@ namespace Models
         public virtual ICollection<User> Users { get; set; }
     }
 }
-
-[ForeignKey("DestinationCity"), Required]
-public int DestinationCityRefId { get; set; }
-public City DestinationCity { get; set; }

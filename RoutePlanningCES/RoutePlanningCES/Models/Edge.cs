@@ -4,16 +4,28 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Models
 {
     public class Edge : IEquatable<Edge>
     {
+        public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes)
+        {
+            this.Duration = duration;
+            this.Price = price;
+            this.MaxWeight = maxWeight;
+            this.Company = company;
+            this.SourceCity = source;
+            this.DestinationCity = destination;
+            this.AcceptedTypes = acceptedTypes;
+        }
+
         [Key]
         public int ID { get; set; }
-        public float duration { get; set; }
-        public float price { get; set; }
-        public float maxWeight { get; set; }
+        public float Duration { get; set; }
+        public float Price { get; set; }
+        public float MaxWeight { get; set; }
 
         //Foreign keys
         [ForeignKey("Company"), Required]
@@ -28,7 +40,7 @@ namespace Models
         public int DestinationCityRefId { get; set; }
         public City DestinationCity { get; set; }
 
-        public ICollection<Type> acceptedTypes { get; set; }
+        public ICollection<Type> AcceptedTypes { get; set; }
 
         public bool Equals(Edge other)
         {

@@ -17,13 +17,19 @@ namespace Models
             this.Company = company;
         }
 
-        public Edge(float duration, float price, float maxWeight, City source, City destination)
+        public Edge(float duration, float price, float maxWeight, City source, City destination) 
+            : this()
         {
             this.Duration = duration;
             this.Price = price;
             this.MaxWeight = maxWeight;
             this.SourceCity = source;
             this.DestinationCity = destination;
+        }
+
+        public Edge()
+        {
+            this.Type = new HashSet<Type>();
         }
 
         [Key]

@@ -5,9 +5,9 @@ using RoutePlanningCES.SharedConstants;
 
 namespace Service
 {
-    public class MappingService : IMappingService
+    public class MappingService 
     {
-        public List<City> GetCities()
+        public static List<City> GetCities()
         {
             return new List<City>()
             {
@@ -46,11 +46,18 @@ namespace Service
             };
         }
 
-        public List<Edge> GetEdges()
+        public static List<Edge> GetEdges()
         {
+            List<Type> allowedTypes = new List<Type>()
+            {
+                new Type("recordedDelivery"),
+                new Type("cautiousParcels"),
+                new Type("refridgeratedGoods"),
+                new Type("liveAnimals"),
+                new Type("")
+            };
             var cities = GetCities();
-
-            return new List<Edge>()
+            List<Edge> edges = new List<Edge>()
             {
                 new Edge(480, 6, 40, cities[0], cities[1]),
                 new Edge(1200, 15, 40, cities[0], cities[2]),
@@ -94,6 +101,9 @@ namespace Service
                 new Edge(960, 12, 40, cities[23], cities[24]),
                 new Edge(960, 12, 40, cities[23], cities[27]),
             };
+            edges.ForEach(e => e.Company = new Company("TL"));
+            edges.ForEach(e => e.Type = allowedTypes);
+            return edges;
         }
     }
 }

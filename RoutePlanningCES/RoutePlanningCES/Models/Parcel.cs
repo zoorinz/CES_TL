@@ -8,16 +8,27 @@ namespace Models
 {
     public class Parcel
     {
-        public Parcel()
+        public Parcel(City destination, City source, Dimension dimension, User Receiver, 
+            User Sender, ICollection<Type> type) : this()
+        {
+            this.DestinationCity = destination;
+            this.SourceCity = source;
+            this.Dimensions = dimension;
+            this.Receiver = Receiver;
+            this.Sender = Sender;
+            this.Type = type;
+        }
+        private Parcel()
         {
             this.Type = new HashSet<Type>(); 
         }
+
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
         public City DestinationCity { get; set; }
         public City SourceCity { get; set; }
         public Dimension Dimensions { get; set; }
-        public User Reciver { get; set; }
+        public User Receiver { get; set; }
         public User Sender { get; set; }
         public virtual ICollection<Type> Type { get; set; }
     }

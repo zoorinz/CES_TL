@@ -9,10 +9,12 @@ namespace Models
 {
     public class City
     {
-        public City(string name)
+        public City(string name) : this()
         {
             this.Name = name;
         }
+
+        private City() { }
 
         [Key]
         public int ID { get; set; }

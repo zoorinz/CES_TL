@@ -4,7 +4,7 @@ using RoutePlanningCES.SharedConstants;
 
 namespace Service
 {
-    public class PriceCalculatorService
+    public class PriceCalculatorService : IPriceCalculatorService
     {
         public int PriceCalculator(Parcel parcel, List<Edge> edges)
         {

@@ -9,7 +9,7 @@ namespace Service
         {
             foreach (var edge in edges)
             {
-                if (true == true)
+                if (edge.Company.Name == "")
                 {
                     var segments = edge.Duration / (4 * 60);
                 }

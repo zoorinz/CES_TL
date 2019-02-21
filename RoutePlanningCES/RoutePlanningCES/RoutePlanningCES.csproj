@@ -149,6 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\ExposedConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DAL\TLInitializer.cs" />
@@ -168,8 +169,10 @@
     <Compile Include="Models\DTOs\HomeDTO.cs" />
     <Compile Include="Models\DTOs\ParcelTypeDTO.cs" />
     <Compile Include="Models\Edge.cs" />
+    <Compile Include="Models\ExposedConnection.cs" />
     <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\Parcel.cs" />
+    <Compile Include="Models\RoutePlanningCESContext.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

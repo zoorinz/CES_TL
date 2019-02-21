@@ -11,9 +11,15 @@ namespace Models
         {
             this.Name = name;
         }
+
         public CityNames Name { get; private set; }
         public uint CityId { get { return (uint)Name; } }
+
+        public  int ID { get; set; }
+        public string name { get; set; }
+
     }
+
 
      
 }

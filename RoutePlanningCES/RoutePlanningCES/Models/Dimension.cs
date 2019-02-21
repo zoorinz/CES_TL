@@ -6,11 +6,19 @@ namespace Models
 {
     public class Dimension
     {
+        public Dimension(float width, float height, float length) : this()
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Length = length;
+        }
+
+        private Dimension() { }
         [Key]
         public int ID { get; set; }
-        public float width { get; set; }
-        public float height { get; set; }
-        public  float length { get; set; }
+        public float Width { get; set; }
+        public float Height { get; set; }
+        public  float Length { get; set; }
 
     }
 }

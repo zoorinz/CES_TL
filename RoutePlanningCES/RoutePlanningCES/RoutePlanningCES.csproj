@@ -148,9 +148,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\ExposedConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SearchResultController.cs" />
     <Compile Include="DAL\TLInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,7 +161,6 @@
       <DependentUpon>201902211834497_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="DAL\TLContext.cs" />
@@ -168,18 +168,19 @@
     <Compile Include="Models\DTOs\CityDTO.cs" />
     <Compile Include="Models\DTOs\HomeDTO.cs" />
     <Compile Include="Models\DTOs\ParcelTypeDTO.cs" />
+    <Compile Include="Models\DTOs\SearchResultDTO.cs" />
     <Compile Include="Models\Edge.cs" />
+    <Compile Include="Models\ExposedConnection.cs" />
     <Compile Include="Models\GraphFabric.cs" />
-    <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\Parcel.cs" />
-    <Compile Include="Models\TestRoute.cs" />
+    <Compile Include="Models\RoutePlanningCESContext.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IMappingService.cs" />
-    <Compile Include="Service\IPriceCalculatorService.cs" />
+    <Compile Include="Service\IPriceCalculator.cs" />
     <Compile Include="Service\IRouteCalculatorService.cs" />
     <Compile Include="Service\MappingService.cs" />
+    <Compile Include="Service\PriceCalculator.cs" />
     <Compile Include="Service\PriceCalculatorService.cs" />
     <Compile Include="Service\RouteCalculatorService.cs" />
     <Compile Include="SharedConstants\Constants.cs" />
@@ -194,15 +195,22 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styling\nav.css" />
     <Content Include="Content\Styling\result.css" />
+    <Content Include="Content\Styling\search.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -214,6 +222,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ours.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -228,6 +238,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\_ResultPartial.cshtml" />
+    <Content Include="Views\SearchResult\SearchResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithm\" />

@@ -9,11 +9,13 @@ namespace Models
 {
     public class User
     {
-        public User(string username, string password)
+        public User(string username, string password) : this()
         {
             this.Username = username;
             this.Password = password;
         }
+
+        private User() { }
 
         public int ID { get; set; }
         public string Username { get; private set; }

@@ -6,9 +6,13 @@ namespace Models
 {
     public class Type
     {
-        public Type(string name)
+        public Type(string name) : this()
         {
             this.Name = name;
+        }
+
+        private Type()
+        {
             this.Parcel = new HashSet<Parcel>();
             this.Edge = new HashSet<Edge>();
         }

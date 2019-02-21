@@ -27,7 +27,9 @@ namespace RoutePlanningCES.Tests.Model
             edges.Add(new Edge(4.0f, 4.0f, 4.0f, company, cities[1], cities[2], allowedTypes));
             edges.Add(new Edge(2.0f, 2.0f, 2.0f, company, cities[2], cities[3], allowedTypes));
             edges.Add(new Edge(1.0f, 1.0f, 1.0f, company, cities[1], cities[3], allowedTypes));
-            var graph = GraphFabric.CreateGraphPrice(cities, edges, "description");
+            var parcel = new Parcel(new City(""), new City(""), new Dimension(1,1,1),
+                                new User("", ""), new User("",""), new List<Type>());
+            var graph = GraphFabric.CreateGraphPrice(cities, edges, "description", parcel);
             int j = 3 + 3;
         }
     }

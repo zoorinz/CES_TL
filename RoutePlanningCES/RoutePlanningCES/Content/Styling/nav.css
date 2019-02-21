@@ -58,12 +58,14 @@ body {
         min-height: auto;
     }
 
+
+
 /* Own Styling */
 
 @media (min-width: 768px) {
     body {
-        background-color: silver;
-        padding-top: 120px;
+        background-color: #FCBF4A;
+        padding-top: 200px;
     }
         
     /* Override bootstrap styles*/

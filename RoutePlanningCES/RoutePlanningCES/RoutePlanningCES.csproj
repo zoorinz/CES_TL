@@ -153,7 +153,7 @@
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\DBContext.cs" />
+    <Compile Include="Models\Database\DBContext.cs" />
     <Compile Include="Models\Dimension.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\GraphFabric.cs" />
@@ -174,9 +174,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\logo_1.svg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Styling\nav.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

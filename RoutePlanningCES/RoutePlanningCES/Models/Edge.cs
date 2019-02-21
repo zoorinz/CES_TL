@@ -18,7 +18,7 @@ namespace Models
             this.Company = company;
             this.SourceCity = source;
             this.DestinationCity = destination;
-            this.acceptedTypes = acceptedTypes;
+            this.AcceptedTypes = acceptedTypes;
         }
 
         [Key]

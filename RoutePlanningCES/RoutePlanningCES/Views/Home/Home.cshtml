@@ -8,7 +8,7 @@
     <div class="col-md-5">
         <div class="form-group">
             <label for="source-city-select">Select source city:</label>
-            <select class="form-control" id="source-city-select">
+            <select class="js-example-placeholder-single js-states form-control">
                 @{
                     foreach (var SourceCity in Model.SourceCitites)
                     {
@@ -16,6 +16,14 @@
                     }
                 }
             </select>
+            @*<select class="form-control" id="source-city-select">
+                @{
+                    foreach (var SourceCity in Model.SourceCitites)
+                    {
+                        <option>@SourceCity</option>
+                    }
+                }
+            </select>*@
         </div>
 
         <div class="form-group">

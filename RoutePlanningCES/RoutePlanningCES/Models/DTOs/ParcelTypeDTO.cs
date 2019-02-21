@@ -7,8 +7,8 @@ namespace RoutePlanningCES.Models.DTOs
 {
     public class ParcelTypeDTO
     {
-        public Guid Id { get; set; }
-        public String Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public override String ToString()
         {

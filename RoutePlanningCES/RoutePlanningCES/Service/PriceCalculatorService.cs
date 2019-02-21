@@ -4,7 +4,7 @@ using RoutePlanningCES.SharedConstants;
 
 namespace Service
 {
-    public class PriceCalculatorService
+    public class PriceCalculatorService : IPriceCalculatorService
     {
         public int PriceCalculator(Parcel parcel, List<Edge> edges)
         {
@@ -13,9 +13,10 @@ namespace Service
                 if (edge.Company.Name == Constants.CompanyTS)
                 {
                     var segments = edge.Duration / (4 * 60);
-                    var price = Constants.Baseprice;
+                    var price = 0;
+                    var segmentPrice = Constants.Baseprice;
 
-                    
+
                 }
             }
             return 1;

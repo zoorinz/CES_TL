@@ -150,7 +150,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AcceptedTypes.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
@@ -159,7 +158,6 @@
     <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\Parcel.cs" />
-    <Compile Include="Models\ParcelTypes.cs" />
     <Compile Include="Models\TestRoute.cs" />
     <Compile Include="Models\Type.cs" />
     <Compile Include="Models\User.cs" />

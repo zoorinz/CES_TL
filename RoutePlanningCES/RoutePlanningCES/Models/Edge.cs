@@ -17,7 +17,9 @@ namespace Models
             this.MaxWeight = maxWeight;
             this.Company = company;
             this.SourceCity = source;
+            this.SourceCityRefId = source.ID;
             this.DestinationCity = destination;
+            this.DestinationCityRefId = destination.ID;
             this.AcceptedTypes = acceptedTypes;
         }
 

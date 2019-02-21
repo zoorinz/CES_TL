@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class ParcelTypes
+    public class DBContext
     {
         
     }

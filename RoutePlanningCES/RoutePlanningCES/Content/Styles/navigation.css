@@ -1,6 +1,6 @@
 ﻿/* Helpers */
 body {
-    background-color: yellowgreen;
+    background-color: red;
     padding-top: 100px;
 }
 
@@ -9,21 +9,26 @@ body {
     min-height: 100px;
 }
 
-.logo img {
-    width: 50px;
-    height: 50px;
-    margin-top: 10px;
-}
+    .logo img {
+        width: 50px;
+        height: 50px;
+        margin-top: 10px;
+    }
 
 
 /* Override bootstrap styles*/
 .navbar-header {
     min-height: 100px;
 }
-.navbar-toggle {
-    margin-top: 27px;
-    margin-bottom: 27px;
+
+.navbar-inverse .navbar-toggle {
+    border-color: red;
 }
+
+.navbar-toggle {
+    margin-bottom: 34px;
+}
+
 .navbar {
     background-color: #78C2AD;
 }
@@ -44,11 +49,12 @@ body {
         background-color: silver;
         padding-top: 120px;
     }
-        
+
     /* Override bootstrap styles*/
     .navbar-header {
         min-height: 120px;
     }
+
     .navbar-toggle {
         margin-top: 38px;
         margin-bottom: 38px;
@@ -56,7 +62,6 @@ body {
 
     .navbar-nav {
         min-height: 120px;
-        
     }
 
 
@@ -72,8 +77,8 @@ body {
     .logo {
         min-width: 90px;
         min-height: 120px;
-
     }
+
     .navbar-brand {
         min-height: 120px;
     }
@@ -83,8 +88,4 @@ body {
         height: 90px;
         margin-top: 0px;
     }
-
-
-    
 }
-

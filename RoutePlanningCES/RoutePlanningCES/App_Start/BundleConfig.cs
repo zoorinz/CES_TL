@@ -19,14 +19,21 @@ namespace RoutePlanningCES
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+           
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                "~/Scripts/bootstrap.bundle.min.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/ours").Include(
+                "~/Scripts/ours.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-grid.css",
                       "~/Content/site.css",
-                      "~/Content/Styling/nav.css"));
+                      "~/Content/Styling/nav.css",
+                      "~/Content/Styling/search.css"));
         }
     }
 }

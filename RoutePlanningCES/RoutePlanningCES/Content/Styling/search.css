@@ -1,0 +1,54 @@
+﻿.destination-city button {
+    width: 100%;
+    /*margin: 10px 0;*/
+}
+
+.source-city button {
+    width: 100%;
+    /*margin: 10px 0;*/
+}
+
+.show {
+    width: 100%;
+}
+
+.parcel-type {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.calculate-route {
+    font-size: 17px;
+    height: 100%;
+    color: white;
+    border: 1px solid white;
+    background-color: #FF757C;
+    text-transform: uppercase;
+    max-width: 100%;
+    white-space: normal;
+    transition: 0.3s;
+}
+
+
+    .calculate-route:hover {
+        background-color: #78C2AD;
+        color: white;
+        border: 1px solid white;
+        
+    }
+
+
+footer p {
+    color: white;
+    font-size: 15px;
+}
+
+
+.search-area .input-group-addon {
+    width: 75px;
+    color: white;
+    background-color: #78C2AD;
+}
+.search-area .input-group {
+    margin: 5px;
+}

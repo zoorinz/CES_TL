@@ -13,9 +13,15 @@ namespace Models
             this.Password = password;
         }
 
-        public string Username { get; private set; }
+
+
+        public int ID { get; set; }
+       public string Username { get; private set; }
         public string Password { get; private set; }
         public string eMail { get; set; }
 
+        //Foreign key for Parcel
+        public int ParcelId { get; set; }
+        public Parcel Parcel { get; set;}
     }
 }

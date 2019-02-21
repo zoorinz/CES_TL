@@ -5,6 +5,6 @@ namespace Service
 {
     public interface IPriceCalculatorService
     {
-        int PriceCalculator(Parcel parcel, List<Edge> edges);
+        List<Edge> EdgePriceCalculator(Parcel parcel, List<Edge> edges);
     }
 }

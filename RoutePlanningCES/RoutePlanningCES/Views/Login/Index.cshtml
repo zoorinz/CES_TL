@@ -1,42 +1,45 @@
 ﻿@{
     ViewBag.Title = "Login";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+
 
 @using (Html.BeginForm())  
 {  
-<div class="bs-example" style="border:2px solid gray;">
-
-    <form>
-        <div class="form-group row d-flex justify-content-center">
-            <label for="userName" class="col-sm-1 col-form-label">User</label>
-            <div class="col-sm-2">
-                <input type="text" class="form-control" id="userName" placeholder="Enter username">
+<div class="d-flex justify-content-center" style="border:2px solid gray;">
+    <div class="bs-example p-3" >
+        <h2 class="text-center my-3">@ViewBag.Title</h2>
+        <h3 class="text-center my-3">@ViewBag.Message</h3>
+        <form>
+            <div class="form-group row d-flex justify-content-center">
+                <label for="userName" class="col-sm-3 col-form-label">User</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="userName" placeholder="Enter username">
+                </div>
             </div>
-        </div>
-        <div class="form-group row d-flex justify-content-center">
-            <label for="password" class="col-sm-1 col-form-label">Password</label>
-            <div class="col-sm-2">
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+            <div class="form-group row d-flex justify-content-center">
+                <label for="password" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
             </div>
+            <div class="loginbtn d-flex justify-content-center">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        <div class="form-group error">
+            @if (@ViewBag.Failedcount != null)
+            {
+
+                <label> Failed Attempt count is: @ViewBag.Failedcount</label>
+            }
+
+            @if (@ViewBag.NotValidUser != null)
+            {
+
+                <label> @ViewBag.NotValidUser</label>
+            }
         </div>
-        <div class="loginbtn d-flex justify-content-center">
-            <input type="submit" value="Login" class="btn btn-primary" />
-        </div>
-    </form>
-    <div class="form-group error">
-        @if (@ViewBag.Failedcount != null)
-        {
-
-            <label> Failed Attempt count is: @ViewBag.Failedcount</label>
-        }
-
-        @if (@ViewBag.NotValidUser != null)
-        {
-
-            <label> @ViewBag.NotValidUser</label>
-        }
     </div>
-</div>  
+</div>
+
 }  

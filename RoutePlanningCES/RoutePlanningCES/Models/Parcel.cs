@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Services.Description;
 using System.Web.UI;
 
 namespace Models
@@ -33,6 +34,10 @@ namespace Models
         [ForeignKey("Senders"), Required]
         public int SenderRefId { get; set; }
         public User Senders { get; set; }
+
+        [ForeignKey("ParcelTypes"), Required]
+        public int ParcelTypeRefId { get; set; }
+        public ICollection<Type> Types { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }

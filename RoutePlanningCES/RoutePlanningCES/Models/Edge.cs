@@ -10,17 +10,22 @@ namespace Models
 {
     public class Edge : IEquatable<Edge>
     {
-        public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes)
+        public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes) : 
+            this(duration, price, maxWeight, source, destination)
+        {
+            this.AcceptedTypes = acceptedTypes;
+            this.Company = company;
+        }
+
+        public Edge(float duration, float price, float maxWeight, City source, City destination)
         {
             this.Duration = duration;
             this.Price = price;
             this.MaxWeight = maxWeight;
-            this.Company = company;
             this.SourceCity = source;
             this.SourceCityRefId = source.ID;
             this.DestinationCity = destination;
             this.DestinationCityRefId = destination.ID;
-            this.AcceptedTypes = acceptedTypes;
         }
 
         [Key]

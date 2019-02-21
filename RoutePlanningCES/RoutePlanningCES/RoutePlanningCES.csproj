@@ -58,6 +58,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -160,6 +161,9 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="DAL\TLContext.cs" />
     <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\DTOs\CityDTO.cs" />
+    <Compile Include="Models\DTOs\HomeDTO.cs" />
+    <Compile Include="Models\DTOs\ParcelTypeDTO.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\IRepository.cs" />

@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Services.Description;
 using System.Web.UI;
 
 namespace Models
 {
     public class Parcel
     {
+        public Parcel()
+        {
+            this.Type = new HashSet<Type>(); 
+        }
         [Key]
-        public int ParcelId { get; set; }
-        public int Sender { get; set; }
-        public int Reciver { get; set; }
+        public int Id { get; set; }
         public int Dimension { get; set; }
 
 
@@ -28,12 +31,12 @@ namespace Models
 
         [ForeignKey("Recivers"), Required]
         public int ReciverRefId { get; set; }
-        public User Recivers { get; set; }
+        public User Reciver { get; set; }
 
         [ForeignKey("Senders"), Required]
         public int SenderRefId { get; set; }
-        public User Senders { get; set; }
+        public User Sender { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Type> Type { get; set; }
     }
 }

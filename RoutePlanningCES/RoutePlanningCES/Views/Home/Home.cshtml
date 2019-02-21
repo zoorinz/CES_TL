@@ -1,27 +1,70 @@
-﻿
+﻿@model RoutePlanningCES.Models.DTOs.HomeDTO
+@using System.Linq;
 @{
     ViewBag.Title = "Route Calculator/Home Page";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        @*@{
-            List<City> listItems= new List<City>();
-            listItems.Add(new City
-            {
-                Name = "Bucharest"
-            });
-            listItems.Add(new City
-            {
-                Name = "Copenhagen"
-            });
-            listItems.Add(new City
-            {
-                Name = "Amsterdam"
-            });
-        }
+<form action="SearchResult/SearchResult" method="post">
+    <div class="row search-area">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="source-city-select">Select source city:</label>
+                <select class="form-control" id="source-city-select">
+                    @{
+                        foreach (var SourceCity in Model.SourceCitites)
+                        {
+                            <option>@SourceCity</option>
+                        }
+                    }
+                </select>
+            </div>
 
-        @Html.DropDownListFor(model => model.tipo, listItems, "-- Select Source City --")*@
+            <div class="form-group">
+                <label for="destination-city-select">Select destination city:</label>
+                <select class="form-control" id="destination-city-select">
+                    @{
+                        foreach (var DestinationCity in Model.DestinationCitites)
+                        {
+                            <option>@DestinationCity</option>
+                        }
+                    }
+                </select>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="parcel-types-select">Select list:</label>
+                <select multiple class="form-control" id="parcel-types-select">
+                    @{
+                        foreach (var ParcelType in Model.ParcelTypes)
+                        {
+                            <option>@ParcelType</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Weight</span>
+                <input type="text" class="form-control" aria-label="Weight">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-addon">Width</span>
+                <input type="text" class="form-control" aria-label="Width">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Height</span>
+                <input type="text" class="form-control" aria-label="Height">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Length</span>
+                <input type="text" class="form-control" aria-label="Length">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-default calculate-route">Calculate route</button>
+        </div>
     </div>
-
-</div>
+</form>

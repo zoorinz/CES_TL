@@ -1,0 +1,69 @@
+.line {
+    background: #000;
+    height: 3px;
+    position: fixed;
+    margin-top: 45px;
+    margin-left: 50px;
+    width: 100%;
+    max-width: 850px;
+}
+@media (min-width:1200px) {
+    .path {
+        margin-left: 50px;
+        width: 880px;
+    }
+}
+
+@media(min-width:992px) and (max-width:1199px) {
+    .line {
+        margin-left: 50px;
+        width: 650px;
+    }
+    .path {
+        margin-left: 50px;
+        width: 680px;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .line {
+        margin-left: 50px;
+        width: 400px;
+    } 
+    .path {
+        margin-left: 50px;
+        width: 430px;
+    }
+}
+@media(min-width:576px) and (max-width:767px) {
+    .path {
+        max-width: 280px;
+        margin-left: 50px;
+    }
+    .line {
+        max-width: 250px;
+        width: 60%;
+    }
+}
+
+@media(max-width:575px) {
+    .line, .path {
+        margin-left: 50px;
+    }
+
+    .line {
+        width: 45%;
+    }
+    .mobile {
+        display: block !important;
+    }
+
+}
+.dot {
+    margin-top:7px;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}

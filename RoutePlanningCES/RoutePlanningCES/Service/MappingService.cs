@@ -46,6 +46,18 @@ namespace Service
             };
         }
 
+        public static List<Type> GetParcelTypes()
+        {
+            return new List<Type>()
+            {
+                new Type("Recommended parcels"),
+                new Type("Cautious parcels"),
+                new Type("Refridgerated goods"),
+                new Type("Livestock"),
+                new Type("Weapons"),
+            };
+        }
+
         public static List<Edge> GetEdges()
         {
             List<Type> allowedTypes = new List<Type>()

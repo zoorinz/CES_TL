@@ -4,13 +4,16 @@ using System.Linq;
 using System.Web;
 using Dijkstra.NET.Graph;
 using Models;
+using Service;
 
 namespace Models
 {
     public class GraphFabric
     {
-        public static Graph<City, string> CreateGraphPrice(IList<City> vertices, IList<Edge> edges, string costDescription)
+        public static Graph<City, string> CreateGraphPrice(IList<City> vertices, IList<Edge> edges, string costDescription, Parcel parcel)
         {
+            edges = PriceCalculatorService.EdgePriceCalculator(parcel, edges.ToList());
+
             Graph<City, string> graph = new Graph<City, string>();
             AddVertices(graph, vertices);
 

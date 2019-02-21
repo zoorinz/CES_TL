@@ -4,6 +4,7 @@ namespace RoutePlanningCES.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using global::Service;
     using Service;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.TLContext>

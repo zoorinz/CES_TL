@@ -15,4 +15,5 @@ namespace Models
         public uint CityId { get { return (uint)Name; } }
     }
 
+     
 }

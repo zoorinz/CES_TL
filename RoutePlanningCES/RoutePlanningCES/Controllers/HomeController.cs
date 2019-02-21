@@ -12,19 +12,6 @@ namespace RoutePlanningCES.Controllers
         {
             return View();
         }
-
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "HomeController: About as ActionResult";
-
-        //    return View();
-        //}
-
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "HomeController: Contact as ActionResult";
-
-        //    return View();
-        //}
+        
     }
 }

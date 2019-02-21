@@ -60,7 +60,7 @@ body {
     }
 
 
-    .navbar-inverse, .navbar-nav > li > a {
+    .navbar-inverse .navbar-nav > li > a {
         margin: 0;
         vertical-align: middle;
         line-height: 120px;

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApp.Service
+namespace Service
 {
     public class RouteCalculatorService
     {
-        
+        static void main(string[] args)
+        {
+            Console.WriteLine("asd");
+        }
     }
 }

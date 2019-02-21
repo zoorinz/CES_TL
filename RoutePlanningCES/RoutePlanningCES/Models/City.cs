@@ -17,7 +17,7 @@ namespace Models
         public uint CityId { get { return (uint)Name; } }
 
         [Key]
-        public int ID { get; set; }
+        public int CityID { get; set; }
         public string name { get; set; }
 
     }

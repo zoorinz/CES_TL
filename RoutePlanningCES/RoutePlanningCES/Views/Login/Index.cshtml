@@ -6,35 +6,37 @@
 
 @using (Html.BeginForm())  
 {  
-    <div class="bs-example" style="border:2px solid gray;">  
-  
-        <div class="form-group centerlook">  
-            <h1> Login </h1>  
-        </div>  
-        <div class="form-group centerlook">  
-            <label>User Name: </label>  
-        </div>  
-        <div class="form-group centerlook">  
-            <label>Password:</label> 
-  
-        </div>  
-        <div class="form-group error">  
-            @if (@ViewBag.Failedcount != null)  
-            {  
-  
-                <label> Failed Attempt count is: @ViewBag.Failedcount</label>  
-            }  
-  
-            @if (@ViewBag.NotValidUser != null)  
-            {  
-  
-                <label> @ViewBag.NotValidUser</label>  
-            }  
-        </div>  
-        <div class="loginbtn">  
-  
-            <input type="submit" value="Login" class="btn btn-primary" />  
-  
-        </div>  
-    </div>  
+<div class="bs-example" style="border:2px solid gray;">
+
+    <form>
+        <div class="form-group row d-flex justify-content-center">
+            <label for="userName" class="col-sm-1 col-form-label">User</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="userName" placeholder="Enter username">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-center">
+            <label for="password" class="col-sm-1 col-form-label">Password</label>
+            <div class="col-sm-2">
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+            </div>
+        </div>
+        <div class="loginbtn d-flex justify-content-center">
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </form>
+    <div class="form-group error">
+        @if (@ViewBag.Failedcount != null)
+        {
+
+            <label> Failed Attempt count is: @ViewBag.Failedcount</label>
+        }
+
+        @if (@ViewBag.NotValidUser != null)
+        {
+
+            <label> @ViewBag.NotValidUser</label>
+        }
+    </div>
+</div>  
 }  

@@ -5,9 +5,9 @@ using RoutePlanningCES.SharedConstants;
 
 namespace Service
 {
-    public class PriceCalculatorService : IPriceCalculatorService
+    public class PriceCalculatorService
     {
-        public List<Edge> EdgePriceCalculator(Parcel parcel, List<Edge> edges)
+        public static List<Edge> EdgePriceCalculator(Parcel parcel, List<Edge> edges)
         {
             foreach (var edge in edges)
             {
@@ -35,7 +35,7 @@ namespace Service
             return edges;
         }
 
-        public float RoutePriceCalculator(List<Edge> edges)
+        public static float RoutePriceCalculator(List<Edge> edges)
         {
             var priceRoute = 0F;
 

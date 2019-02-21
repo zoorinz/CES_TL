@@ -171,7 +171,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Bootswatch-minty.css" />
+    <Content Include="Content\ExternalStylingLibs\Bootswatch-minty.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -206,6 +206,7 @@
   <ItemGroup>
     <Folder Include="Algorithm\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Content\StandardStyling\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

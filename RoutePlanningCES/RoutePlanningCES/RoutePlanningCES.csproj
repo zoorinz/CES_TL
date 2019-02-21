@@ -58,6 +58,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -145,7 +146,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -156,6 +156,9 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Database\DBContext.cs" />
     <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\DTOs\CityDTO.cs" />
+    <Compile Include="Models\DTOs\HomeDTO.cs" />
+    <Compile Include="Models\DTOs\ParcelTypeDTO.cs" />
     <Compile Include="Models\Edge.cs" />
     <Compile Include="Models\GraphFabric.cs" />
     <Compile Include="Models\IRepository.cs" />

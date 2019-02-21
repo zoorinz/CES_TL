@@ -25,6 +25,8 @@ namespace RoutePlanningCES
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.bundle.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                "~/Scripts/select2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ours").Include(
                 "~/Scripts/ours.js"));

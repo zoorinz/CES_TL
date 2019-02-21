@@ -19,8 +19,8 @@ namespace Models
 
         [Key]
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
-
 
         public virtual ICollection<Parcel> Parcel { get; set; }
         public virtual ICollection<Edge> Edge { get; set; }

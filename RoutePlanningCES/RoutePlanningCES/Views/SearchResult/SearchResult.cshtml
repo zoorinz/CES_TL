@@ -4,13 +4,96 @@
     ViewBag.Title = "SearchResult";
 }
 
-<h2>Irina is a horse</h2>
-@Model.Fastest.Duration
-@Model.Fastest.Price
-
 @{
+    List <string> cities = new List<string>();
     foreach (var cityOfPath in Model.Fastest.Cities)
     {
-        <p>@cityOfPath.Name</p>
-    }
+        cities.Add(@cityOfPath.Name);
+            }
 }
+
+
+@* Cheap *@
+<div style="border:2px solid gray;">
+    <div class="d-flex flex-row mobile">
+        <div class="d-flex flex-column">
+            @{ int price = 20;
+                int time = 5;
+            }
+            <h2 class="text-center my-3">Cheapest</h2>
+            <div class="d-flex flex-row">
+                <label>Price:</label>
+                <p> @Model.Fastest.Price $</p>
+            </div>
+            <div class="d-flex flex-row">
+                <label>Time:</label>
+                <p>@Model.Fastest.Duration hours</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center flex-column">
+
+            <div class=" d-flex">
+                <div class="line">
+                </div>
+                <div class="path d-flex justify-content-between">
+                    @{ 
+                        @*string[] cities = { "abe", "bananas", "citronprinsen", "dronte", "elefant", "falafel", "giraf", "hestesko", "integration", "juleaften", "kartoffel" };*@
+                        bool evenNode = false;
+                        string destination = cities.Last();
+                        var citiesList = cities.ToList();
+                        citiesList.Remove(destination);
+
+                    }
+
+                    @foreach (var x in citiesList)
+                    {<div class="d-flex flex-column">
+                            @if (!@evenNode)
+                            {
+                                <p style=" height:20px">@x</p>
+                            }
+                            else
+                            {
+                                <p style=" height:20px"></p>
+                            }
+                            <div>
+                                <span class="dot"></span>
+                            </div>
+                            @if (@evenNode)
+                            {
+                                <p>@x</p>
+                            }
+                            else
+                            {
+                                <p></p>
+                            }
+                            @{evenNode = !evenNode;}
+                        </div>
+
+                    }
+
+                    <div class="d-flex flex-column">
+                        @if (!@evenNode)
+                        {
+                            <p style="height:20px"> @destination</p>
+                        }
+                        else
+                        {
+                            <p style=" height:20px"></p>
+                        }
+                        <span class="dot"></span>
+                        @if (@evenNode)
+                        {
+                            <p style="height:20px">@destination</p>
+                        }
+                        else
+                        {
+                            <p style=" height:20px"></p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

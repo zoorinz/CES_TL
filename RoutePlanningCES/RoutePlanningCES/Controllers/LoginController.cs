@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,24 @@ namespace RoutePlanningCES.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public bool AuthUser(string username, string password)
+        {
+            if (ValidateString(username) && ValidateString(password)) ;
+            User user;
+
+            using (var context = new TLContext())
+            {
+                user = context.GetUser(username, password);
+            }
+            return user != null;
+        }
+
+        //TODO ensure we check the string input.
+        private bool ValidateString(string str)
+        {
+            return true;
         }
     }
 }

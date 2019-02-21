@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Models;
+using System.Linq;
 
 namespace DAL
 {
@@ -34,6 +35,18 @@ namespace DAL
                 edges = query.ToListAsync().Result;
             }
             return edges;
+        }
+
+        public User GetUser(string username, string password)
+        {
+            User user;
+            using (var context = new TLContext())
+            {
+                user = (from u in context.User
+                       where u.Username == username && u.Password == password
+                       select u).FirstOrDefault<User>(); 
+            }
+            return user;
         }
     }
 }

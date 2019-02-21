@@ -4,5 +4,13 @@
     ViewBag.Title = "SearchResult";
 }
 
-<h2>SearchResults</h2>
+<h2>Irina is a horse</h2>
+@Model.Fastest.Duration
+@Model.Fastest.Price
 
+@{
+    foreach (var cityOfPath in Model.Fastest.Cities)
+    {
+        <p>@cityOfPath.Name</p>
+    }
+}

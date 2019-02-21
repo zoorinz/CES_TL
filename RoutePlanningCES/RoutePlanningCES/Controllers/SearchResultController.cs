@@ -9,7 +9,7 @@ namespace RoutePlanningCES.Controllers
 {
     public class SearchResultController : Controller
     {
-        public ActionResult SearchResult(int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length)
+        public ActionResult SearchResult() //int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length
         {
             var cPath = new PathDTO()
             {
@@ -20,8 +20,20 @@ namespace RoutePlanningCES.Controllers
 
             var fPath = new PathDTO()
             {
-                Cities = new List<CityDTO>(),
-                Duration = 42.2F,
+                Cities = new List<CityDTO>
+                {
+                    new CityDTO
+                    {
+                        Id = 1,
+                        Name = "Helsinki"
+                    },
+                    new CityDTO
+                    {
+                        Id = 12,
+                        Name = "Rome"
+                    }
+                },
+                Duration = new Random().Next(),
                 Price = 42.2F
             };
 
@@ -39,7 +51,7 @@ namespace RoutePlanningCES.Controllers
                 Best = bPath
             };
 
-            return View(result);
+            return PartialView(result);
         }
     }
 }

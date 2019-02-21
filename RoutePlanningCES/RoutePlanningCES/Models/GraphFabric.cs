@@ -15,7 +15,7 @@ namespace Models
             AddVertices(graph, vertices);
 
             foreach (var edge in edges)
-                graph.Connect((uint)edge.SourceCityRefId, (uint)edge.DestinationCityRefId, (int)edge.Price, costDescription);
+                graph.Connect(1, 2, (int)edge.Price, costDescription);
 
             return graph;
         }
@@ -26,7 +26,7 @@ namespace Models
             AddVertices(graph, vertices);
 
             foreach (var edge in edges)
-                graph.Connect((uint)edge.SourceCityRefId, (uint)edge.DestinationCityRefId, (int)edge.Duration, costDescription);
+                graph.Connect(1, 2, (int)edge.Duration, costDescription);
 
             return graph;
         }

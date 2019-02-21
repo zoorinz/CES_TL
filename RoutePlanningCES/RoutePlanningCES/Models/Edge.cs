@@ -10,17 +10,26 @@ namespace Models
 {
     public class Edge : IEquatable<Edge>
     {
-        public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes)
+        public Edge(float duration, float price, float maxWeight, Company company, City source, City destination, ICollection<Type> acceptedTypes) : 
+            this(duration, price, maxWeight, source, destination)
+        {
+            this.Type = acceptedTypes;
+            this.Company = company;
+        }
+
+        public Edge(float duration, float price, float maxWeight, City source, City destination) 
+            : this()
         {
             this.Duration = duration;
             this.Price = price;
             this.MaxWeight = maxWeight;
-            this.Company = company;
             this.SourceCity = source;
-            this.SourceCityRefId = source.ID;
             this.DestinationCity = destination;
-            this.DestinationCityRefId = destination.ID;
-            this.AcceptedTypes = acceptedTypes;
+        }
+
+        public Edge()
+        {
+            this.Type = new HashSet<Type>();
         }
 
         [Key]
@@ -30,19 +39,11 @@ namespace Models
         public float MaxWeight { get; set; }
 
         //Foreign keys
-        [ForeignKey("Company"), Required]
-        public int CompanyRefId { get; set; }
+        
         public Company Company { get; set; }
-
-        [ForeignKey("SourceCity"), Required]
-        public int SourceCityRefId { get; set; }
         public City SourceCity { get; set; }
-
-        [ForeignKey("DestinationCity"), Required]
-        public int DestinationCityRefId { get; set; }
         public City DestinationCity { get; set; }
-
-        public ICollection<Type> AcceptedTypes { get; set; }
+        public ICollection<Type> Type { get; set; }
 
         public bool Equals(Edge other)
         {

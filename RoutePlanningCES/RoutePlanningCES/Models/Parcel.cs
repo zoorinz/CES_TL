@@ -8,35 +8,28 @@ namespace Models
 {
     public class Parcel
     {
-        public Parcel()
+        public Parcel(City destination, City source, Dimension dimension, User Receiver, 
+            User Sender, ICollection<Type> type) : this()
+        {
+            this.DestinationCity = destination;
+            this.SourceCity = source;
+            this.Dimensions = dimension;
+            this.Receiver = Receiver;
+            this.Sender = Sender;
+            this.Type = type;
+        }
+        private Parcel()
         {
             this.Type = new HashSet<Type>(); 
         }
+
         [Key]
-        public int Id { get; set; }
-        public int Dimension { get; set; }
-
-
-        [ForeignKey("DestinationCity"), Required]
-        public int DestinationCityRefId { get; set; }
+        public int ID { get; set; }
         public City DestinationCity { get; set; }
-
-        [ForeignKey("SourceCity"), Required]
-        public int SourceCityRefId { get; set; }
         public City SourceCity { get; set; }
-
-        [ForeignKey("Dimensions"), Required]
-        public int DimensionRefId { get; set; }
-        public City Dimensions { get; set; }
-
-        [ForeignKey("Recivers"), Required]
-        public int ReciverRefId { get; set; }
-        public User Reciver { get; set; }
-
-        [ForeignKey("Senders"), Required]
-        public int SenderRefId { get; set; }
+        public Dimension Dimensions { get; set; }
+        public User Receiver { get; set; }
         public User Sender { get; set; }
-
         public virtual ICollection<Type> Type { get; set; }
     }
 }

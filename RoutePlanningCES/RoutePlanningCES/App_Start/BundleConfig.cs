@@ -24,6 +24,8 @@ namespace RoutePlanningCES
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.bundle.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                "~/Scripts/select2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ours").Include(
                 "~/Scripts/ours.js"));
@@ -31,6 +33,7 @@ namespace RoutePlanningCES
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-grid.css",
+                      "~/Content/select2.css",
                       "~/Content/site.css",
                       "~/Content/Styling/result.css",
                       "~/Content/Styling/nav.css",

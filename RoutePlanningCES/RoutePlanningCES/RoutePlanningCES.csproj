@@ -168,6 +168,7 @@
     <Compile Include="Service\IRouteCalculatorService.cs" />
     <Compile Include="Service\PriceCalculatorService.cs" />
     <Compile Include="Service\RouteCalculatorService.cs" />
+    <Compile Include="SharedConstants\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

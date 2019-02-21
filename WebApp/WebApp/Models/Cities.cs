@@ -5,7 +5,5 @@ using System.Web;
 
 namespace WebApplication.Models
 {
-    public class Edge
-    {
-    }
+    public enum CityNames { tanger = 1, };
 }

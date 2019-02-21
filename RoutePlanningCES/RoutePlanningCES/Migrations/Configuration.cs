@@ -22,7 +22,7 @@ namespace RoutePlanningCES.Migrations
             var edges = MappingService.GetEdges();
             edges.ForEach(edge => context.Edge.AddOrUpdate(edge));
 
-            context.SaveChangesAsync();
+            context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

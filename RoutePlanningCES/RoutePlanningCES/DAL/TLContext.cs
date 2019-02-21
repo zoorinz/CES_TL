@@ -1,11 +1,12 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Models;
 
 namespace DAL
 {
  public class TLContext : DbContext {
-        public TLContext() : base("TLContext")
+        public TLContext() : base("name=TLContext")
         {
             
         }
@@ -20,6 +21,19 @@ namespace DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+        public List<Edge> GetAllEdges()
+        {
+            List<Edge> edges;
+            using (var contex = new TLContext())
+            {
+                var query = contex.Edge.Include(edge =>  edge.SourceCity)
+                    .Include(edge => edge.DestinationCity)
+                    .Include(edge => edge.Company)
+                    .Include(edge => edge.Type);
+                edges = query.ToListAsync().Result;
+            }
+            return edges;
         }
     }
 }

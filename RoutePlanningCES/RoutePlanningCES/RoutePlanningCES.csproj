@@ -160,6 +160,18 @@
     <Compile Include="Migrations\201902211834497_initial.Designer.cs">
       <DependentUpon>201902211834497_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902211936208_nowWithData.cs" />
+    <Compile Include="Migrations\201902211936208_nowWithData.Designer.cs">
+      <DependentUpon>201902211936208_nowWithData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902211952555_notNullCityName.cs" />
+    <Compile Include="Migrations\201902211952555_notNullCityName.Designer.cs">
+      <DependentUpon>201902211952555_notNullCityName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902212158307_tet.cs" />
+    <Compile Include="Migrations\201902212158307_tet.Designer.cs">
+      <DependentUpon>201902212158307_tet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
@@ -239,6 +251,7 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\_ResultPartial.cshtml" />
     <Content Include="Views\SearchResult\SearchResult.cshtml" />
+    <Content Include="Views\Home\_ErrorPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithm\" />
@@ -259,6 +272,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902211834497_initial.resx">
       <DependentUpon>201902211834497_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902211936208_nowWithData.resx">
+      <DependentUpon>201902211936208_nowWithData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902211952555_notNullCityName.resx">
+      <DependentUpon>201902211952555_notNullCityName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902212158307_tet.resx">
+      <DependentUpon>201902212158307_tet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

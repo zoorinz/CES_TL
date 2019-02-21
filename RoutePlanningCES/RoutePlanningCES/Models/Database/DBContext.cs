@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace Models
+namespace Models.Database
 {
  public class DBContext : DbContext {
             public virtual DbSet<City> City { get; set; }

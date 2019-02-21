@@ -28,8 +28,8 @@ namespace Service
                             segmentPrice += Constants.Baseprice * Constants.RefrigeratedGoodsAddOn;
                     }
 
-                    float price = segments * segmentPrice;
-                    edge.Price = price;
+                    float priceEdge = segments * segmentPrice;
+                    edge.Price = priceEdge;
                 }
             }
             return edges;
@@ -37,7 +37,14 @@ namespace Service
 
         public float RoutePriceCalculator(List<Edge> edges)
         {
-            return 2.0F;
+            var priceRoute = 0F;
+
+            foreach (var edge in edges)
+            {
+                priceRoute += edge.Price;
+            }
+
+            return priceRoute;
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Service
     public interface IPriceCalculatorService
     {
         List<Edge> EdgePriceCalculator(Parcel parcel, List<Edge> edges);
+        float RoutePriceCalculator(List<Edge> edges);
     }
 }

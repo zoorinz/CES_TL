@@ -35,6 +35,7 @@ namespace RoutePlanningCES.Models
         {
             foreach (var vertice in vertices)
                 graph.AddNode(vertice);
+
             return graph;
         }
     }

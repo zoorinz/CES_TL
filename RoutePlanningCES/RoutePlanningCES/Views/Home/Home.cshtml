@@ -4,67 +4,80 @@
     ViewBag.Title = "Route Calculator/Home Page";
 }
 
-<form action="SearchResult/SearchResult" method="post">
-    <div class="row search-area">
-        <div class="col-md-5">
-            <div class="form-group">
-                <label for="source-city-select">Select source city:</label>
-                <select class="form-control" id="source-city-select">
-                    @{
-                        foreach (var SourceCity in Model.SourceCitites)
-                        {
-                            <option>@SourceCity</option>
-                        }
+<div class="row search-area">
+    <div class="col-md-5">
+        <div class="form-group">
+            <label for="source-city-select">Select source city:</label>
+            <select class="form-control" id="source-city-select">
+                @{
+                    foreach (var SourceCity in Model.SourceCitites)
+                    {
+                        <option>@SourceCity</option>
                     }
-                </select>
-            </div>
+                }
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="destination-city-select">Select destination city:</label>
-                <select class="form-control" id="destination-city-select">
-                    @{
-                        foreach (var DestinationCity in Model.DestinationCitites)
-                        {
-                            <option>@DestinationCity</option>
-                        }
+        <div class="form-group">
+            <label for="destination-city-select">Select destination city:</label>
+            <select class="form-control" id="destination-city-select">
+                @{
+                    foreach (var DestinationCity in Model.DestinationCitites)
+                    {
+                        <option>@DestinationCity</option>
                     }
-                </select>
-            </div>
+                }
+            </select>
+        </div>
 
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="parcel-types-select">Select list:</label>
-                <select multiple class="form-control" id="parcel-types-select">
-                    @{
-                        foreach (var ParcelType in Model.ParcelTypes)
-                        {
-                            <option>@ParcelType</option>
-                        }
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="parcel-types-select">Select list:</label>
+            <select multiple class="form-control" id="parcel-types-select">
+                @{
+                    foreach (var ParcelType in Model.ParcelTypes)
+                    {
+                        <option>@ParcelType</option>
                     }
-                </select>
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">Weight</span>
-                <input type="text" class="form-control" aria-label="Weight">
-            </div>
+                }
+            </select>
         </div>
-        <div class="col-md-2">
-            <div class="input-group">
-                <span class="input-group-addon">Width</span>
-                <input type="text" class="form-control" aria-label="Width">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">Height</span>
-                <input type="text" class="form-control" aria-label="Height">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon">Length</span>
-                <input type="text" class="form-control" aria-label="Length">
-            </div>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-default calculate-route">Calculate route</button>
+        <div class="input-group">
+            <span class="input-group-addon">Weight</span>
+            <input type="text" class="form-control" aria-label="Weight">
         </div>
     </div>
-</form>
+    <div class="col-md-2">
+        <div class="input-group">
+            <span class="input-group-addon">Width</span>
+            <input type="text" class="form-control" aria-label="Width">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Height</span>
+            <input type="text" class="form-control" aria-label="Height">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Length</span>
+            <input type="text" class="form-control" aria-label="Length">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-default calculate-route" onclick="calculateRoute()">Calculate route</button>
+    </div>
+</div>
+<div id="searchResultContainer">
+
+</div>
+
+<script>
+    function calculateRoute() {
+        $.ajax({
+            url: '/SearchResult/SearchResult',
+            dataType: 'html',
+            success: function (resultedRoutes) {
+                $('#searchResultContainer').html(resultedRoutes);
+            }
+        });
+    }
+</script>

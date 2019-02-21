@@ -20,9 +20,6 @@ namespace RoutePlanningCES.Tests.Service
             graph.AddNode(3);
             graph.AddNode(4);
 
-
-
-
             graph.Connect(1, 2, 5, ""); 
             graph.Connect(2, 3, 2, ""); 
             graph.Connect(3, 4, 4, ""); 

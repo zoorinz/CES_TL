@@ -1,58 +1,118 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
+using DAL;
+using Dijkstra.NET.Graph;
+using Dijkstra.NET.ShortestPath;
+using Models;
 using RoutePlanningCES.Models.DTOs;
+using Service;
+using Edge = Models.Edge;
+using Type = Models.Type;
 
 namespace RoutePlanningCES.Controllers
 {
     public class SearchResultController : Controller
     {
-        public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, List<string> parcelType) //int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length
-        //, int height, int length, int weight, string sourceCity, string destinationCity, List<string> parcelType
+        public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, List<string> parcelType)
         {
+            var destination = new City(destinationCity);
+            var source = new City(sourceCity);
+            var dimensions = new Dimension(width, height, length);
+            var parcelTypes = GetParcelTypes(parcelType);
+            var parcel = new Parcel(destination, source, dimensions, null, null, parcelTypes);
+            
+            var result = ClickCalculate(parcel, source, destination);
+
+            return PartialView(result);
+        }
+
+        private static List<Type> GetParcelTypes(List<string> parcelType)
+        {
+            var parcelTypes = new List<Type>();
+            foreach (var type in parcelType)
+            {
+                parcelTypes.Add(new Type(type));
+            }
+
+            return parcelTypes;
+        }
+
+        public SearchResultDTO ClickCalculate(Parcel parcel, City source, City destination)
+        {
+            IList<Edge> edges;
+            IList<City> cities;
+            using (var context = new TLContext())
+            {
+                edges = context.GetAllEdges();
+                cities = context.City.ToList();
+            }
+            Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
+            Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");
+
+            RouteCalculatorService routeCalcPrice = new RouteCalculatorService(graphPrice);
+            ShortestPathResult resultPrice = routeCalcPrice.CalculateShortestPath(source, destination);
+            List<City> pathPrice = routeCalcPrice.GetCityPath(resultPrice);
+
+            RouteCalculatorService routeCalcTime = new RouteCalculatorService(graphTime);
+            ShortestPathResult resultTime = routeCalcPrice.CalculateShortestPath(source, destination);
+            List<City> pathTime = routeCalcTime.GetCityPath(resultTime);
+
+            this.SaveParcel(parcel);
+
             var cPath = new PathDTO()
             {
-                Cities = new List<CityDTO>(),
-                Duration = width,
-                Price = width
+                Cities = ReturnCityDtos(pathPrice),
+                Duration = 42,
+                Price = resultPrice.Distance
             };
 
             var fPath = new PathDTO()
             {
-                Cities = new List<CityDTO>
-                {
-                    new CityDTO
-                    {
-                        Id = 1,
-                        Name = sourceCity
-                    },
-                    new CityDTO
-                    {
-                        Id = 12,
-                        Name = destinationCity
-                    }
-                },
-                Duration = width,
-                Price = width
+                Cities = ReturnCityDtos(pathTime),
+                Duration = resultTime.Distance,
+                Price = 42
             };
 
             var bPath = new PathDTO()
             {
                 Cities = new List<CityDTO>(),
-                Duration = width,
-                Price = width
+                Duration = 42,
+                Price = 42
             };
 
-            var result = new SearchResultDTO
+             return new SearchResultDTO
             {
                 Cheapest = cPath,
                 Fastest = fPath,
                 Best = bPath
             };
+        }
 
-            return PartialView(result);
+        private void SaveParcel(Parcel parcel)
+        {
+            using (var context = new TLContext())
+            {
+                context.Parcels.Add(parcel);
+                context.SaveChangesAsync();
+            }
+        }
+
+        private List<CityDTO> ReturnCityDtos(List<City> cities)
+        {
+            var dtoCitites = new List<CityDTO>();
+            foreach (var city in cities)
+            {
+                dtoCitites.Add(new CityDTO()
+                {
+                    Id = city.ID,
+                    Name = city.Name
+                });
+            }
+
+            return dtoCitites;
         }
     }
 }

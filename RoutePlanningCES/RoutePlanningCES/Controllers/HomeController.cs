@@ -69,6 +69,16 @@ namespace RoutePlanningCES.Controllers
             ShortestPathResult resultTime = routeCalcPrice.CalculateShortestPath(source, destination);
             List<City> pathTime = routeCalcTime.GetCityPath(resultTime);
 
+            this.SaveParcel(parcel);
+        }
+
+        private void SaveParcel(Parcel parcel)
+        {
+            using (var context = new TLContext())
+            {
+                context.Parcels.Add(parcel);
+                context.SaveChangesAsync();
+            }
         }
     }
 }

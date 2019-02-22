@@ -25,15 +25,15 @@ namespace Models
 
         [Key]
         public int ID { get; set; }
-        [Required]
+        
         public City DestinationCity { get; set; }
-        [Required]
+        
         public City SourceCity { get; set; }
         [Required]
         public Dimension Dimensions { get; set; }
-        [Required]
+        
         public User Receiver { get; set; }
-        [Required]
+        
         public User Sender { get; set; }
         public virtual ICollection<Type> Type { get; set; }
     }

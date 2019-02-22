@@ -11,7 +11,7 @@ namespace RoutePlanningCES.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(DAL.TLContext context)
@@ -19,7 +19,7 @@ namespace RoutePlanningCES.Migrations
             var cities = MappingService.GetCities();
             cities.ForEach(city => context.City.AddOrUpdate(city));
 
-            var edges = MappingService.GetEdges();
+            var edges = MappingService.GetEdges(cities);
             edges.ForEach(edge => context.Edge.AddOrUpdate(edge));
 
             context.SaveChanges();

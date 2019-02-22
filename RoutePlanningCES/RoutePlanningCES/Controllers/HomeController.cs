@@ -18,6 +18,13 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult Home()
         {
+            IList<Edge> edges;
+            IList<City> cities2;
+            using (var context = new TLContext())
+            {
+                edges = context.GetAllEdges();
+                cities2 = context.GetCities().ToList();
+            }
             var cities = MappingService.GetCities();
             var dtoCities = new List<CityDTO>();
             foreach (var city in cities)
@@ -56,7 +63,7 @@ namespace RoutePlanningCES.Controllers
             using (var context = new TLContext())
             {
                 edges = context.GetAllEdges();
-                cities = context.City.ToList();
+                cities = context.GetCities().ToList();
             }
             Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
             Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");

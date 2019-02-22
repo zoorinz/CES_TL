@@ -23,6 +23,14 @@ namespace DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public IList<City> GetCities()
+        {
+            using (var contex = new TLContext())
+            {
+                return contex.City.ToList().GetRange(0,32); 
+            }
+        }
         public IList<Edge> GetAllEdges()
         {
             IList<Edge> edges;

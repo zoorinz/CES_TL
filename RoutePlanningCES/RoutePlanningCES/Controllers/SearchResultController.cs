@@ -51,7 +51,7 @@ namespace RoutePlanningCES.Controllers
             using (var context = new TLContext())
             {
                 edges = context.GetAllEdges();
-                cities = context.City.ToList();
+                cities = context.GetCities();
             }
             Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
             Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");

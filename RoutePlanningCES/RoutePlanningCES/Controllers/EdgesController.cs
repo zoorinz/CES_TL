@@ -172,7 +172,7 @@ namespace RoutePlanningCES.Controllers
                 var dataObjects = response.Content.ReadAsAsync<IEnumerable<System.Security.Cryptography.Xml.DataObject>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
                 foreach (var d in dataObjects)
                 {
-                    Console.WriteLine("{0}", d.Name);
+                
                 }
 
                 EdgeResponse edgeResponse = JsonConvert.DeserializeObject<EdgeResponse>("");

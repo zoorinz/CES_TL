@@ -22,5 +22,7 @@ namespace Models
         public System.Data.Entity.DbSet<Models.ExposedConnection> ExposedConnections { get; set; }
 
         public System.Data.Entity.DbSet<Models.Parcel> Parcels { get; set; }
+
+        public System.Data.Entity.DbSet<Models.Edge> Edges { get; set; }
     }
 }

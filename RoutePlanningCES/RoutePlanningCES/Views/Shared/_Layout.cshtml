@@ -28,7 +28,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    @if(Request.QueryString["login"] == "1")
+                    {
+                    <li> <a href='/?login=1'>Home</a></li>
+                    }else{
                     <li>@Html.ActionLink("Home", "Home", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

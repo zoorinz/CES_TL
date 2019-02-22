@@ -9,7 +9,7 @@ namespace Service
     {
         public static List<City> GetCities()
         {
-            return new List<City>()
+            return  new List<City>()
             {
                 new City("Tanger"){ ID =0 }, //0
                 new City("Marrakesh"){ ID =1 }, //1

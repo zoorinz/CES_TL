@@ -3,143 +3,163 @@
 @{
     ViewBag.Title = "Route Calculator/Home Page";
 }
+@if (Request.QueryString["login"] == "1")
+{
+    <div class="row search-area">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @*<label for="source-city-select">Select source city:</label>*@
+                <select class="js-example-placeholder-single sour js-states form-control">
+                    <option></option>
+                    @{
+                        foreach (var SourceCity in Model.SourceCitites)
+                        {
+                            <option>@SourceCity</option>
+                        }
+                    }
+                </select>
+                @*<select class="form-control" id="source-city-select">
+                        @{
+                            foreach (var SourceCity in Model.SourceCitites)
+                            {
+                                <option>@SourceCity</option>
+                            }
+                        }
+                    </select>*@
+            </div>
 
-<div class="row search-area">
-    <div class="col-lg-4">
-        <div class="form-group">
-            @*<label for="source-city-select">Select source city:</label>*@
-            <select class="js-example-placeholder-single sour js-states form-control">
-                <option></option> 
-                @{
-                    foreach (var SourceCity in Model.SourceCitites)
-                    {
-                        <option>@SourceCity</option>
+            <div class="form-group">
+                <select class="js-example-placeholder-single dest js-states form-control">
+                    <option></option>
+                    @{
+                        foreach (var DestinationCity in Model.DestinationCitites)
+                        {
+                            <option>@DestinationCity</option>
+                        }
                     }
-                }
-            </select>
-            @*<select class="form-control" id="source-city-select">
-                @{
-                    foreach (var SourceCity in Model.SourceCitites)
-                    {
-                        <option>@SourceCity</option>
-                    }
-                }
-            </select>*@
-        </div>
+                </select>
+                @*<label for="destination-city-select">Select destination city:</label>*@
+                @*<select class="form-control" id="destination-city-select">
+                        @{
+                            foreach (var DestinationCity in Model.DestinationCitites)
+                            {
+                                <option>@DestinationCity</option>
+                            }
+                        }
+                    </select>*@
+            </div>
 
-        <div class="form-group">
-            <select class="js-example-placeholder-single dest js-states form-control">
-                <option></option> 
-                @{
-                    foreach (var DestinationCity in Model.DestinationCitites)
-                    {
-                        <option>@DestinationCity</option>
-                    }
-                }
-            </select>
-            @*<label for="destination-city-select">Select destination city:</label>*@
-            @*<select class="form-control" id="destination-city-select">
-            @{
-                foreach (var DestinationCity in Model.DestinationCitites)
-                {
-                    <option>@DestinationCity</option>
-                }
-            }
-        </select>*@
         </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <select class="js-example-placeholder-multiple js-states form-control" multiple="multiple">
+                    @{
+                        foreach (var ParcelType in Model.ParcelTypes)
+                        {
+                            if (ParcelType.Name == "Weapons")
+                            {
+                                continue;
+                            }
+
+                            <option>@ParcelType</option>
+                        }
+                    }
+                </select>
+                @*<label for="parcel-types-select">Select list:</label>
+                    <select multiple class="form-control" id="parcel-types-select">
+                        @{
+                            foreach (var ParcelType in Model.ParcelTypes)
+                            {
+                                <option>@ParcelType</option>
+                            }
+                        }
+                    </select>*@
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Weight</span>
+                <input type="text" class="form-control weight" id="weight" aria-label="Weight" placeholder="in kg">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="input-group">
+                <span class="input-group-addon">Width</span>
+                <input type="text" class="form-control width" id="width" aria-label="Width" placeholder="in cm">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Height</span>
+                <input type="text" class="form-control height" id="height" aria-label="Height" placeholder="in cm">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Length</span>
+                <input type="text" class="form-control length" id="length" aria-label="Length" placeholder="in cm">
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" class="btn btn-default calculate-route" onclick="calculateRoute()">Calculate route</button>
+        </div>
+    </div>
+    <div id="searchResultContainer" style="padding-top: 40px;">
 
     </div>
-    <div class="col-lg-3">
-        <div class="form-group">
-            <select class="js-example-placeholder-multiple js-states form-control" multiple="multiple">
-                @{
-                    foreach (var ParcelType in Model.ParcelTypes)
-                    {
-                        <option>@ParcelType</option>
-                    }
-                }
-            </select>
-            @*<label for="parcel-types-select">Select list:</label>
-        <select multiple class="form-control" id="parcel-types-select">
-            @{
-                foreach (var ParcelType in Model.ParcelTypes)
-                {
-                    <option>@ParcelType</option>
-                }
-            }
-        </select>*@
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Weight</span>
-            <input type="text" class="form-control weight" id="weight" aria-label="Weight">
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="input-group">
-            <span class="input-group-addon">Width</span>
-            <input type="text" class="form-control width" id="width" aria-label="Width">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Height</span>
-            <input type="text" class="form-control height" id="height" aria-label="Height">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Length</span>
-            <input type="text" class="form-control length" id="length" aria-label="Length">
-        </div>
-    </div>
-    <div class="col-lg-2">
-        <button type="button" class="btn btn-default calculate-route" onclick="calculateRoute()">Calculate route</button>
-    </div>
-</div>
-<div id="searchResultContainer" style="padding-top: 40px;">
-    
-</div>
 
-<script>
-    $(".js-example-placeholder-single.sour").select2({
-        placeholder: "From...",
-        allowClear: true
-    });
-
-    $(".js-example-placeholder-single.dest").select2({
-        placeholder: "To...",
-        allowClear: true
-    });
-
-    $(".js-example-placeholder-multiple").select2({
-        placeholder: "Select parcel type..."
-    });
-
-    function calculateRoute() {
-        var sourceCity = $(".js-example-placeholder-single.sour").select2("val");
-        var destinationCity = $(".js-example-placeholder-single.dest").select2("val");
-        var parcelType = $(".js-example-placeholder-multiple").select2("val");
-
-        var weight = document.getElementById('weight').value;
-        var height = document.getElementById('height').value;
-        var length = document.getElementById('length').value;
-        var width = document.getElementById('width').value;
-
-     
-        console.log(sourceCity, destinationCity);
-        console.log(parcelType);
-        console.log(weight);
-        console.log(width);
-        console.log(height);
-        console.log(length);
-
-        $.ajax({
-            url: '/SearchResult/SearchResult',
-            data: { width: width, height: height, length: length, weight: weight, sourceCity: sourceCity, destinationCity: destinationCity, parcelType: parcelType.join() },
-            dataType: 'html',
-            success: function (resultedRoutes) {
-                $('#searchResultContainer').html(resultedRoutes);
-            }
+    <script>
+        $(".js-example-placeholder-single.sour").select2({
+            placeholder: "From...",
+            allowClear: true
         });
-        document.getElementById('weight').value = '';
-        document.getElementById('length').value = '';
-        document.getElementById('width').value = '';
-        document.getElementById('height').value = '';
-    }
-</script>
+
+        $(".js-example-placeholder-single.dest").select2({
+            placeholder: "To...",
+            allowClear: true
+        });
+
+        $(".js-example-placeholder-multiple").select2({
+            placeholder: "Select parcel type..."
+        });
+
+        function calculateRoute() {
+            var sourceCity = $(".js-example-placeholder-single.sour").select2("val");
+            var destinationCity = $(".js-example-placeholder-single.dest").select2("val");
+            var parcelType = $(".js-example-placeholder-multiple").select2("val");
+
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+            var length = document.getElementById('length').value;
+            var width = document.getElementById('width').value;
+
+
+            if (weight > 40) {
+                @* Error Message No delivery path was found *@
+                alert("Weight cannot exceed 40 kg.");
+                document.getElementById('weight').value = null;
+                return;
+            }
+
+            console.log(sourceCity, destinationCity);
+            console.log(parcelType);
+            console.log(weight);
+            console.log(width);
+            console.log(height);
+            console.log(length);
+
+            $.ajax({
+                url: '/SearchResult/SearchResult',
+                data: { width: width, height: height, length: length, weight: weight, sourceCity: sourceCity, destinationCity: destinationCity, parcelType: parcelType.join() },
+                dataType: 'html',
+                success: function (resultedRoutes) {
+                    $('#searchResultContainer').html(resultedRoutes);
+                }
+            });
+            document.getElementById('weight').value = '';
+            document.getElementById('length').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('height').value = '';
+        }
+    </script>
+}
+else
+{
+    @Html.Partial("_ErrorPartial");
+
+}
+

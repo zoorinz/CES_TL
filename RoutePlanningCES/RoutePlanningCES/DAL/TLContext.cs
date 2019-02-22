@@ -23,9 +23,9 @@ namespace DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-        public List<Edge> GetAllEdges()
+        public IList<Edge> GetAllEdges()
         {
-            List<Edge> edges;
+            IList<Edge> edges;
             using (var contex = new TLContext())
             {
                 var query = contex.Edge.Include(edge =>  edge.SourceCity)

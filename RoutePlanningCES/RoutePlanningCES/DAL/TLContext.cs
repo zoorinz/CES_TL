@@ -34,19 +34,24 @@ namespace DAL
         }
         public IList<Edge> GetAllEdges()
         {
-            IList<Edge> edges;
-            using (var contex = new TLContext())
+
+            using (var context = new TLContext())
             {
-                var query = contex.Edge.Include(edge =>  edge.SourceCity)
-                    .Include(edge => edge.DestinationCity)
-                    .Include(edge => edge.Company)
-                    .Include(edge => edge.Type);
-                edges = query.ToListAsync().Result;
+                var query = this.GetAllEdgesQuery(context);
+                return query.ToListAsync().Result;
             }
-            return edges;
         }
 
-        public User GetUser(string username, string password)
+     public IQueryable<Edge> GetAllEdgesQuery(TLContext context)
+     {
+            return context.Edge.Include(edge => edge.SourceCity)
+                .Include(edge => edge.DestinationCity)
+                .Include(edge => edge.Company)
+                .Include(edge => edge.Type);
+            
+     }
+
+     public User GetUser(string username, string password)
         {
             User user;
             using (var context = new TLContext())

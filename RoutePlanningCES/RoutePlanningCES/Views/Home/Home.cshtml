@@ -128,6 +128,13 @@
             var width = document.getElementById('width').value;
 
 
+            if (weight > 40) {
+                @* Error Message No delivery path was found *@
+                alert("Weight cannot exceed 40 kg.");
+                document.getElementById('weight').value = null;
+                return;
+            }
+
             console.log(sourceCity, destinationCity);
             console.log(parcelType);
             console.log(weight);
@@ -155,3 +162,4 @@ else
     @Html.Partial("_ErrorPartial");
 
 }
+

@@ -14,6 +14,7 @@ using DAL;
 using Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using RoutePlanningCES.SharedConstants;
 using Type = Models.Type;
 namespace RoutePlanningCES.Controllers
 {
@@ -80,7 +81,7 @@ namespace RoutePlanningCES.Controllers
 
             IList<Edge> edges = db.GetAllEdges();
             
-            List<EdgeResponse> response = CreateTheirResponse(edges, request.ParcelType, request.weight);
+            List<EdgeResponse> response = CreateOurResponse(edges, request.ParcelType, request.weight);
             if (!response.Any())
             {
                 return StatusCode(HttpStatusCode.NoContent);
@@ -88,7 +89,7 @@ namespace RoutePlanningCES.Controllers
             return Ok(response);
         }
 
-        private List<EdgeResponse> CreateTheirResponse(IList<Edge> edges, List<string> types, float weight)
+        private List<EdgeResponse> CreateOurResponse(IList<Edge> edges, List<string> types, float weight)
         {
             List<EdgeResponse> result = new List<EdgeResponse>();
             foreach (Edge edge in edges)
@@ -98,7 +99,21 @@ namespace RoutePlanningCES.Controllers
                     continue;
                 if (!AcceptedType(types))
                     continue;
-                result.Add(new EdgeResponse(edge.SourceCity.Name, edge.DestinationCity.Name, (int)edge.Duration, edge.Price));
+
+                var basePrice = edge.Price;
+                foreach (var type in types)
+                {
+                    if (type == Constants.RecommendedType)
+                        basePrice += Constants.RecommendedAddOn;
+                    if (type == Constants.LiveAnimalsType)
+                        basePrice += edge.Price * Constants.LiveAnmialsAddOn;
+                    if (type == Constants.CautiousParcelsType)
+                        basePrice += edge.Price * Constants.CautiousParcelsAddOn;
+                    if (type == Constants.RefrigeratedGoodsType)
+                        basePrice += edge.Price * Constants.RefrigeratedGoodsAddOn;
+                }
+
+                result.Add(new EdgeResponse(edge.SourceCity.Name, edge.DestinationCity.Name, (int)edge.Duration, basePrice));
             }
             return result;
         }

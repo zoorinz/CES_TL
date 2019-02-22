@@ -11,38 +11,38 @@ namespace Service
         {
             return new List<City>()
             {
-                new City("Tanger"), //0
-                new City("Marrakesh"), //1
-                new City("Tunis"), //2
-                new City("Sahara"), //3
-                new City("Dakar"), //4
-                new City("Sierra Leone"), //5
-                new City("Timbuktu"), //6
-                new City("Guldkysten"), //7
-                new City("Slavekysten"), //8
-                new City("Tripoli"), //9
-                new City("Omdurman"), //10
-                new City("Wadai"), //11
-                new City("Dafur"),//12
-                new City("Congo"),//13
-                new City("Cairo"),//14
-                new City("Suakin"),//15
-                new City("Bahr El Ghazal"),//16
-                new City("Addis Abeba"),//17
-                new City("Kap Guardafui"),//18
-                new City("Victoria Søen"),//19
-                new City("Zanzibar"),//20
-                new City("Kabalo"),//21
-                new City("Luanda"),//22
-                new City("Hvalbugten"),//23
-                new City("Victoria Faldene"),//24
-                new City("Mocambique"),//25
-                new City("Dragebjerget"),//26
-                new City("Kapstaden"),//27
-                new City("De Kanariske Øer"),//28
-                new City("ST. Helena"),//29
-                new City("Kap St. Marie"),//30
-                new City("Amatave"),//31
+                new City("Tanger"){ ID =0 }, //0
+                new City("Marrakesh"){ ID =1 }, //1
+                new City("Tunis"){ ID =2 }, //2
+                new City("Sahara"){ ID =3 }, //3
+                new City("Dakar"){ ID =4 }, //4
+                new City("Sierra Leone"){ ID =5 }, //5
+                new City("Timbuktu"){ ID =6 }, //6
+                new City("Guldkysten"){ ID =7 }, //7
+                new City("Slavekysten"){ ID =8 }, //8
+                new City("Tripoli"){ ID =9 }, //9
+                new City("Omdurman"){ ID =10 }, //10
+                new City("Wadai"){ ID =11 }, //11
+                new City("Dafur"){ ID =12 },//12
+                new City("Congo"){ ID =13 },//13
+                new City("Cairo"){ ID =14 },//14
+                new City("Suakin"){ ID =15 },//15
+                new City("Bahr El Ghazal"){ ID =16 },//16
+                new City("Addis Abeba"){ ID =17 },//17
+                new City("Kap Guardafui"){ ID =18 },//18
+                new City("Victoria Søen"){ ID =19 },//19
+                new City("Zanzibar"){ ID =20 },//20
+                new City("Kabalo"){ ID =21 },//21
+                new City("Luanda"){ ID =22 },//22
+                new City("Hvalbugten"){ ID =23 },//23
+                new City("Victoria Faldene"){ ID =24 },//24
+                new City("Mocambique"){ ID =25 },//25
+                new City("Dragebjerget"){ ID =26 },//26
+                new City("Kapstaden"){ ID =27 },//27
+                new City("De Kanariske Øer"){ ID =28 },//28
+                new City("ST. Helena"){ ID =29 },//29
+                new City("Kap St. Marie"){ ID =30 },//30
+                new City("Amatave"){ ID =31 },//31
             };
         }
 

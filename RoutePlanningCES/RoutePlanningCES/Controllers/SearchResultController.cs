@@ -18,15 +18,11 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, string parcelType)
         {
-            IList<City> cities;// = MappingService.GetCities();
-            using (var context = new TLContext())
-            {
-                cities = context.GetCities();
-            }
+            var cities = MappingService.GetCities();
             var destination = new City(destinationCity);
-            destination.ID = GetCityID(cities, destination.Name);
+            destination.ID = GetCityId(destination.Name, cities);
             var source = new City(sourceCity);
-            source.ID = GetCityID(cities, source.Name);
+            source.ID = GetCityId(source.Name, cities);
 
             var dimensions = new Dimension(width, height, length);
             var parcelTypes = GetParcelTypes(parcelType.Split(',').ToList());
@@ -37,16 +33,16 @@ namespace RoutePlanningCES.Controllers
             return PartialView(result);
         }
 
-        private int GetCityID(IList<City> cities, string cityName)
+        private int GetCityId(string cityName, List<City> cities)
         {
-            foreach (var city in cities)
+            var id = 0;
+            for (var i = 0; i < cities.Count; i++)
             {
-                if (city.Name.Equals(cityName))
-                {
-                    return city.ID;
-                }
+                if (cities[i].Name == cityName)
+                    id = i;
             }
-            throw new ArgumentException("There was no city with name: " + cityName);
+
+            return id;
         }
 
         private static List<Type> GetParcelTypes(List<string> parcelType)
@@ -62,13 +58,11 @@ namespace RoutePlanningCES.Controllers
 
         public SearchResultDTO ClickCalculate(Parcel parcel, City source, City destination)
         {
-            IList<Edge> edges;
-            IList<City> cities;
-            using (var context = new TLContext())
-            {
-                edges = context.GetAllEdges();
-                cities = context.GetCities();
-            }
+            List<Edge> edges;
+            List<City> cities;
+                cities = MappingService.GetCities();
+                edges = MappingService.GetEdges(cities); //context.GetAllEdges();
+
             Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
             Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");
             Graph<City, string> graphPriceTime = GraphFabric.CreateGraphTime(cities, edges, "price times cost");

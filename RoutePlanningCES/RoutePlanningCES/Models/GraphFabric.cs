@@ -18,8 +18,11 @@ namespace Models
             AddVertices(graph, vertices);
 
             foreach (var edge in edges)
-                graph.Connect((uint)edge.SourceCity.ID, (uint)edge.DestinationCity.ID, (int)edge.Price, costDescription);
+            {
+                graph.Connect((uint)edge.SourceCity.ID +1, (uint)edge.DestinationCity.ID +1, (int)edge.Price, costDescription);
 
+                System.Diagnostics.Debug.WriteLine(edge.SourceCity.ID + " -> " + edge.DestinationCity.ID + " : " + edge.Price);
+            }
             return graph;
         }
 

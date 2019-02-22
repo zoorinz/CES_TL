@@ -15,10 +15,11 @@
         public static float RefrigeratedGoodsAddOn = 0.10F; //In percent
 
         //Parcel Types
-        public static string WeaponsType = "";
-        public static string RecommendedType = "";
-        public static string LiveAnimalsType = "";
-        public static string CautiousParcelsType = "";
-        public static string RefrigeratedGoodsType = "";
+        public static string WeaponsType = "weapons";
+        public static string RecommendedType = "recordedDelivery";
+        public static string LiveAnimalsType = "liveAnimals";
+        public static string CautiousParcelsType = "cautiousParcels";
+        public static string RefrigeratedGoodsType = "refridgeratedGoods";
+        public static string Empty = "";
     }
 }

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -16,6 +17,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RoutePlanningCES.SharedConstants;
 using Type = Models.Type;
+
 namespace RoutePlanningCES.Controllers
 {
     public class EdgesController : ApiController
@@ -53,13 +55,13 @@ namespace RoutePlanningCES.Controllers
         private TLContext db = new TLContext();
         private List<string> allowedTypes = new List<string>()
         {
-            "recordedDelivery",
-            "cautiousParcels",
-            "refridgeratedGoods",
-            "liveAnimals",
-            ""
+            Constants.RecommendedType,
+            Constants.CautiousParcelsType,
+            Constants.RefrigeratedGoodsType,
+            Constants.LiveAnimalsType,
+            Constants.Empty
         };
-        // GET: /Edges
+
         [Route("api/GetRoutes")]
         public IHttpActionResult GetEdges()
         {
@@ -103,13 +105,13 @@ namespace RoutePlanningCES.Controllers
                 var basePrice = edge.Price;
                 foreach (var type in types)
                 {
-                    if (type == Constants.RecommendedType)
+                    if (type.Equals(Constants.RecommendedType))
                         basePrice += Constants.RecommendedAddOn;
-                    if (type == Constants.LiveAnimalsType)
+                    if (type.Equals(Constants.LiveAnimalsType))
                         basePrice += edge.Price * Constants.LiveAnmialsAddOn;
-                    if (type == Constants.CautiousParcelsType)
+                    if (type.Equals(Constants.CautiousParcelsType))
                         basePrice += edge.Price * Constants.CautiousParcelsAddOn;
-                    if (type == Constants.RefrigeratedGoodsType)
+                    if (type.Equals(Constants.RefrigeratedGoodsType))
                         basePrice += edge.Price * Constants.RefrigeratedGoodsAddOn;
                 }
 
@@ -146,6 +148,37 @@ namespace RoutePlanningCES.Controllers
         private bool EdgeExists(int id)
         {
             return db.Edge.Count(e => e.ID == id) > 0;
+        }
+
+        public static IList<Edge> GetRoutesAnotherAPI(string url, Parcel parcel)
+        {
+            IList<Edge> edges = new List<Edge>();
+            Dimension dim = parcel.Dimensions;
+            List<string> types = new List<string>();
+            foreach (var type in parcel.Type)
+            {
+                types.Add(type.Name);
+            }
+            EdgeRequest requestBody = new EdgeRequest((int)dim.Width, (int)dim.Height, (int)dim.Length, 39, types);
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(url);
+
+            // Add an Accept header for JSON format.
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync("").Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response body.
+                var dataObjects = response.Content.ReadAsAsync<IEnumerable<System.Security.Cryptography.Xml.DataObject>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                foreach (var d in dataObjects)
+                {
+                    Console.WriteLine("{0}", d.Name);
+                }
+
+                EdgeResponse edgeResponse = JsonConvert.DeserializeObject<EdgeResponse>("");
+            }
+
+            return edges;
         }
     }
 }

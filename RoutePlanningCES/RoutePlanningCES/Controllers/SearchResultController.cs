@@ -18,11 +18,15 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, string parcelType)
         {
-            var cities = MappingService.GetCities();
+            IList<City> cities;// = MappingService.GetCities();
+            using (var context = new TLContext())
+            {
+                cities = context.GetCities();
+            }
             var destination = new City(destinationCity);
-            destination.ID = GetCityId(destination.Name, cities);
+            destination.ID = GetCityID(cities, destination.Name);
             var source = new City(sourceCity);
-            source.ID = GetCityId(source.Name, cities);
+            source.ID = GetCityID(cities, source.Name);
 
             var dimensions = new Dimension(width, height, length);
             var parcelTypes = GetParcelTypes(parcelType.Split(',').ToList());
@@ -31,6 +35,18 @@ namespace RoutePlanningCES.Controllers
             var result = ClickCalculate(parcel, source, destination);
 
             return PartialView(result);
+        }
+
+        private int GetCityID(IList<City> cities, string cityName)
+        {
+            foreach (var city in cities)
+            {
+                if (city.Name.Equals(cityName))
+                {
+                    return city.ID;
+                }
+            }
+            throw new ArgumentException("There was no city with name: " + cityName);
         }
 
         private static List<Type> GetParcelTypes(List<string> parcelType)
@@ -117,18 +133,6 @@ namespace RoutePlanningCES.Controllers
             }
 
             return dtoCitites;
-        }
-
-        private int GetCityId(string cityName, List<City> cities)
-        {
-            var id = 0;
-            for (var i = 0; i <= cities.Count - 1; i++)
-            {
-                if (cities[i].Name == cityName)
-                    id = i;
-            }
-
-            return id;
         }
     }
 }

@@ -3,106 +3,136 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL;
 using Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
+using RoutePlanningCES.SharedConstants;
+using Type = Models.Type;
 namespace RoutePlanningCES.Controllers
 {
     public class EdgesController : ApiController
     {
-        private TLContext db = new TLContext();
+        private class EdgeRequest
+        {
+            public EdgeRequest(int width, int height, int length, float weight, List<string> parcelType)
+            {
+                this.Dimensions = new Dimension(width, height, length);
+                this.weight = weight;
+                this.ParcelType = parcelType;
+            }
+            public EdgeRequest() { }
+            public Dimension Dimensions { get; set; }
+            public float weight { get; set; }
+            public List<string> ParcelType { get; set; }
+        }
 
-        // GET: api/Edges
+        private class EdgeResponse
+        {
+            public EdgeResponse(string origin, string destination, int time, float price)
+            {
+                this.Origin = origin;
+                this.Destination = destination;
+                this.Time = time;
+                this.Price = price;
+            }
+            public EdgeResponse() { }
+            public string Origin { get; set; }
+            public string Destination { get; set; }
+            public int Time { get; set; }
+            public float Price { get; set; }
+        }
+
+        private TLContext db = new TLContext();
+        private List<string> allowedTypes = new List<string>()
+        {
+            "recordedDelivery",
+            "cautiousParcels",
+            "refridgeratedGoods",
+            "liveAnimals",
+            ""
+        };
+        // GET: /Edges
+        [Route("api/GetRoutes")]
         public IHttpActionResult GetEdges()
         {
-            return Ok(db.GetAllEdgesQuery(db));
-        }
-
-        // GET: api/Edges/5
-        [ResponseType(typeof(Edge))]
-        public IHttpActionResult GetEdge(int id)
-        {
-            Edge edge = db.Edge.Find(id);
-            if (edge == null)
+            string jsonBody;
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Request.InputStream))
             {
-                return NotFound();
+                jsonBody = reader.ReadToEnd();
             }
 
-            return Ok(edge);
-        }
-
-        // PUT: api/Edges/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutEdge(int id, Edge edge)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != edge.ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(edge).State = EntityState.Modified;
-
+            EdgeRequest request;
             try
             {
-                db.SaveChanges();
+                request = JsonConvert.DeserializeObject<EdgeRequest>(jsonBody);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e) 
             {
-                if (!EdgeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(HttpStatusCode.BadRequest);
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            IList<Edge> edges = db.GetAllEdges();
+            
+            List<EdgeResponse> response = CreateOurResponse(edges, request.ParcelType, request.weight);
+            if (!response.Any())
+            {
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            return Ok(response);
         }
 
-        // POST: api/Edges
-        [ResponseType(typeof(Edge))]
-        public IHttpActionResult PostEdge(Edge edge)
+        private List<EdgeResponse> CreateOurResponse(IList<Edge> edges, List<string> types, float weight)
         {
-            if (!ModelState.IsValid)
+            List<EdgeResponse> result = new List<EdgeResponse>();
+            foreach (Edge edge in edges)
             {
-                return BadRequest(ModelState);
+                //TODO do this in sql!
+                if (weight > 40)
+                    continue;
+                if (!AcceptedType(types))
+                    continue;
+
+                var basePrice = edge.Price;
+                foreach (var type in types)
+                {
+                    if (type == Constants.RecommendedType)
+                        basePrice += Constants.RecommendedAddOn;
+                    if (type == Constants.LiveAnimalsType)
+                        basePrice += edge.Price * Constants.LiveAnmialsAddOn;
+                    if (type == Constants.CautiousParcelsType)
+                        basePrice += edge.Price * Constants.CautiousParcelsAddOn;
+                    if (type == Constants.RefrigeratedGoodsType)
+                        basePrice += edge.Price * Constants.RefrigeratedGoodsAddOn;
+                }
+
+                result.Add(new EdgeResponse(edge.SourceCity.Name, edge.DestinationCity.Name, (int)edge.Duration, basePrice));
             }
-
-            db.Edge.Add(edge);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = edge.ID }, edge);
+            return result;
         }
 
-        // DELETE: api/Edges/5
-        [ResponseType(typeof(Edge))]
-        public IHttpActionResult DeleteEdge(int id)
+        private bool AcceptedType(List<string> strTypes)
         {
-            Edge edge = db.Edge.Find(id);
-            if (edge == null)
+            bool acceptedType = true;
+            foreach (var strType in strTypes)
             {
-                return NotFound();
+                if (!allowedTypes.Contains(strType))
+                {
+                    acceptedType = false;
+                    break;
+                }
             }
 
-            db.Edge.Remove(edge);
-            db.SaveChanges();
-
-            return Ok(edge);
+            return acceptedType;
         }
+        
 
         protected override void Dispose(bool disposing)
         {

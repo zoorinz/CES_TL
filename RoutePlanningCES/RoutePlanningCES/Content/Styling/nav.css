@@ -5,6 +5,7 @@ body {
     background-color: #FCBF4A;
 }
 
+
 .navbar-header {
     border-bottom: 1px solid #78C2AD;
 }
@@ -14,7 +15,7 @@ body {
 
 .logo {
     min-width: 30px;
-    min-height: 100px;
+    min-height: 99px;
 }
 
 .logo img {
@@ -70,6 +71,10 @@ body {
     display: block;
 }
 
+#userName, #password {
+    margin-bottom: 7px;
+}
+
 /* Own Styling */
 
 @media (min-width: 1024px) {
@@ -114,7 +119,7 @@ body {
     /* Own Styling */
     .logo {
         min-width: 90px;
-        min-height: 150px;
+        min-height: 149px;
     }
     .navbar-brand {
         min-height: 120px;
@@ -126,8 +131,7 @@ body {
         margin: 15px 0 0 15px;
     }
 
-
-
+    
 
 }
 

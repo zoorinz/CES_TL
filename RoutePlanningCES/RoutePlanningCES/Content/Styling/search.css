@@ -28,6 +28,7 @@
     white-space: normal;
     transition: 0.3s;
     width: 100%;
+    margin-top: 7px; 
 }
 
 
@@ -38,7 +39,13 @@
         
     }
 
-
+.select2 {
+    min-width: 100%;
+    margin-bottom: 7px;
+}
+#weight, #height, #width, #length {
+    min-width: 100%;
+}
 footer p {
     color: white;
     font-size: 15px;
@@ -52,4 +59,18 @@ footer p {
 }
 .search-area .input-group {
     margin-bottom: 2px;
+}
+
+@media (min-width: 1024px) {
+    .select2 {
+        min-width: initial;
+        margin-bottom: 7px;
+    }
+    #weight, #height, #width, #length {
+        min-width: initial;
+    }
+
+    .calculate-route {
+        margin-top: 0;
+    }
 }

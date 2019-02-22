@@ -55,6 +55,11 @@
                 @{
                     foreach (var ParcelType in Model.ParcelTypes)
                     {
+                        if (ParcelType.Name == "Weapons")
+                        {
+                            continue;
+                        }
+
                         <option>@ParcelType</option>
                     }
                 }

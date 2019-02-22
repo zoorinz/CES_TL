@@ -18,6 +18,7 @@ namespace DAL
         public virtual DbSet<Parcel> Parcels { get; set; }
         public virtual DbSet<Type> Type { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ExposedConnection> ExposedConnection { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -160,6 +160,10 @@
     <Compile Include="Migrations\201902220134557_initial.Designer.cs">
       <DependentUpon>201902220134557_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902220158009_route-v2.cs" />
+    <Compile Include="Migrations\201902220158009_route-v2.Designer.cs">
+      <DependentUpon>201902220158009_route-v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Company.cs" />
@@ -318,6 +322,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902220134557_initial.resx">
       <DependentUpon>201902220134557_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902220158009_route-v2.resx">
+      <DependentUpon>201902220158009_route-v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

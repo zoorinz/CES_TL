@@ -1,7 +1,8 @@
 ﻿/* Helpers */
 body {
-    background-color: silver;
-    padding-top: 100px;
+    padding-top: 120px;
+    
+    background-color: #FCBF4A;
 }
 
 .navbar-header {
@@ -58,16 +59,32 @@ body {
         min-height: auto;
     }
 
+    .form-group,
+    .input-group,
+    .calculate-route {
+        width: 100%;
+        margin: 0 auto;
+    }
 
+.calculate-route  {
+    display: block;
+}
 
 /* Own Styling */
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     body {
-        background-color: #FCBF4A;
         padding-top: 200px;
     }
-        
+
+    .form-group,
+    .input-group {
+        width: auto;
+    }
+
+    .form-group {
+        margin-bottom: 2px;
+    }
     /* Override bootstrap styles*/
     .navbar-header {
         min-height: 120px;
@@ -109,8 +126,8 @@ body {
         margin: 15px 0 0 15px;
     }
 
-    
 
-    
+
+
 }
 

@@ -9,13 +9,14 @@ namespace RoutePlanningCES.Controllers
 {
     public class SearchResultController : Controller
     {
-        public ActionResult SearchResult() //int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length
+        public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, List<string> parcelType) //int SourceId, int DestinationId, List<int> ParcelTypes, int weight, int width, int height, int length
+        //, int height, int length, int weight, string sourceCity, string destinationCity, List<string> parcelType
         {
             var cPath = new PathDTO()
             {
                 Cities = new List<CityDTO>(),
-                Duration = 42.1F,
-                Price = 42.1F
+                Duration = width,
+                Price = width
             };
 
             var fPath = new PathDTO()
@@ -25,23 +26,23 @@ namespace RoutePlanningCES.Controllers
                     new CityDTO
                     {
                         Id = 1,
-                        Name = "Helsinki"
+                        Name = sourceCity
                     },
                     new CityDTO
                     {
                         Id = 12,
-                        Name = "Rome"
+                        Name = destinationCity
                     }
                 },
-                Duration = new Random().Next(),
-                Price = 42.2F
+                Duration = width,
+                Price = width
             };
 
             var bPath = new PathDTO()
             {
                 Cities = new List<CityDTO>(),
-                Duration = 42.3F,
-                Price = 42.3F
+                Duration = width,
+                Price = width
             };
 
             var result = new SearchResultDTO

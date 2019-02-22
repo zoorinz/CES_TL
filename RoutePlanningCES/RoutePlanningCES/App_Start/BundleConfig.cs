@@ -32,9 +32,9 @@ namespace RoutePlanningCES
                 "~/Scripts/ours.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                    "~/Content/css/select2.css",
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-grid.css",
-                      "~/Content/css/select2.css",
                       "~/Content/site.css",
                       "~/Content/Styling/result.css",
                       "~/Content/Styling/nav.css",

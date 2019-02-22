@@ -199,6 +199,8 @@
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\Images\logo_1.svg" />
+    <Content Include="Content\Images\pig.svg" />
+    <Content Include="Content\Images\time.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Styling\nav.css" />
     <Content Include="Content\Styling\result.css" />

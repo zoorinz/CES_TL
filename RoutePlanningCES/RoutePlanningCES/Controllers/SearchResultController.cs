@@ -18,9 +18,12 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult SearchResult(int width, int height, int length, int weight, string sourceCity, string destinationCity, string parcelType)
         {
-            
+            var cities = MappingService.GetCities();
             var destination = new City(destinationCity);
+            destination.ID = GetCityId(destination.Name, cities);
             var source = new City(sourceCity);
+            source.ID = GetCityId(source.Name, cities);
+
             var dimensions = new Dimension(width, height, length);
             var parcelTypes = GetParcelTypes(parcelType.Split(',').ToList());
             var parcel = new Parcel(destination, source, dimensions, null, null, parcelTypes);
@@ -48,7 +51,7 @@ namespace RoutePlanningCES.Controllers
             using (var context = new TLContext())
             {
                 edges = context.GetAllEdges();
-                cities = context.City.ToList();
+                cities = context.GetCities();
             }
             Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
             Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");
@@ -114,6 +117,18 @@ namespace RoutePlanningCES.Controllers
             }
 
             return dtoCitites;
+        }
+
+        private int GetCityId(string cityName, List<City> cities)
+        {
+            var id = 0;
+            for (var i = 0; i <= cities.Count - 1; i++)
+            {
+                if (cities[i].Name == cityName)
+                    id = i;
+            }
+
+            return id;
         }
     }
 }

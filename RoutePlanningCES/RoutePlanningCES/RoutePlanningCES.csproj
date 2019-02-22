@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ExposedConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ParcelsController.cs" />
     <Compile Include="Controllers\SearchResultController.cs" />
     <Compile Include="DAL\TLInitializer.cs" />
     <Compile Include="Global.asax.cs">

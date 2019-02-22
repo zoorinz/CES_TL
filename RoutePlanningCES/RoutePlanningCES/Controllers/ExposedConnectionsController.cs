@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using DAL;
 using Models;
 using RoutePlanningCES.Models;
 
@@ -15,19 +16,19 @@ namespace RoutePlanningCES.Controllers
 {
     public class ExposedConnectionsController : ApiController
     {
-        private RoutePlanningCESContext db = new RoutePlanningCESContext();
+        private TLContext db = new TLContext();
 
         // GET: api/ExposedConnections
         public IQueryable<ExposedConnection> GetExposedConnections()
         {
-            return db.ExposedConnections;
+            return db.ExposedConnection;
         }
 
         // GET: api/ExposedConnections/5
         [ResponseType(typeof(ExposedConnection))]
         public IHttpActionResult GetExposedConnection(int id)
         {
-            ExposedConnection exposedConnection = db.ExposedConnections.Find(id);
+            ExposedConnection exposedConnection = db.ExposedConnection.Find(id);
             if (exposedConnection == null)
             {
                 return NotFound();
@@ -80,7 +81,7 @@ namespace RoutePlanningCES.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.ExposedConnections.Add(exposedConnection);
+            db.ExposedConnection.Add(exposedConnection);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = exposedConnection.ID }, exposedConnection);
@@ -90,13 +91,13 @@ namespace RoutePlanningCES.Controllers
         [ResponseType(typeof(ExposedConnection))]
         public IHttpActionResult DeleteExposedConnection(int id)
         {
-            ExposedConnection exposedConnection = db.ExposedConnections.Find(id);
+            ExposedConnection exposedConnection = db.ExposedConnection.Find(id);
             if (exposedConnection == null)
             {
                 return NotFound();
             }
 
-            db.ExposedConnections.Remove(exposedConnection);
+            db.ExposedConnection.Remove(exposedConnection);
             db.SaveChanges();
 
             return Ok(exposedConnection);
@@ -113,7 +114,7 @@ namespace RoutePlanningCES.Controllers
 
         private bool ExposedConnectionExists(int id)
         {
-            return db.ExposedConnections.Count(e => e.ID == id) > 0;
+            return db.ExposedConnection.Count(e => e.ID == id) > 0;
         }
     }
 }

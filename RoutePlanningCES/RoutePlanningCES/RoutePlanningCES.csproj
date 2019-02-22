@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ExposedConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ParcelsController.cs" />
     <Compile Include="Controllers\SearchResultController.cs" />
     <Compile Include="DAL\TLInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +160,10 @@
     <Compile Include="Migrations\201902220134557_initial.cs" />
     <Compile Include="Migrations\201902220134557_initial.Designer.cs">
       <DependentUpon>201902220134557_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902220158009_route-v2.cs" />
+    <Compile Include="Migrations\201902220158009_route-v2.Designer.cs">
+      <DependentUpon>201902220158009_route-v2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\City.cs" />
@@ -318,6 +323,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902220134557_initial.resx">
       <DependentUpon>201902220134557_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902220158009_route-v2.resx">
+      <DependentUpon>201902220158009_route-v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

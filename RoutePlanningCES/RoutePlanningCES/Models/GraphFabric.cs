@@ -34,6 +34,18 @@ namespace Models
             return graph;
         }
 
+        public static Graph<City, string> CreateGraphPriceTimesTime(IList<City> vertices, IList<Edge> edges, 
+            string costDescription)
+        {
+            Graph<City, string> graph = new Graph<City, string>();
+            AddVertices(graph, vertices);
+
+            foreach (var edge in edges)
+                graph.Connect((uint)edge.SourceCity.ID, (uint)edge.DestinationCity.ID, (int)(edge.Duration * edge.Price), costDescription);
+
+            return graph;
+        }
+
         private static Graph<City, string> AddVertices(Graph<City, string> graph, IList<City> vertices)
         {
             foreach (var vertice in vertices)

@@ -71,6 +71,7 @@ namespace RoutePlanningCES.Controllers
             }
             Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
             Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");
+            Graph<City, string> graphPriceTime = GraphFabric.CreateGraphTime(cities, edges, "price times cost");
 
             RouteCalculatorService routeCalcPrice = new RouteCalculatorService(graphPrice);
             ShortestPathResult resultPrice = routeCalcPrice.CalculateShortestPath(source, destination);
@@ -79,6 +80,10 @@ namespace RoutePlanningCES.Controllers
             RouteCalculatorService routeCalcTime = new RouteCalculatorService(graphTime);
             ShortestPathResult resultTime = routeCalcPrice.CalculateShortestPath(source, destination);
             List<City> pathTime = routeCalcTime.GetCityPath(resultTime);
+
+            RouteCalculatorService routePriceTime = new RouteCalculatorService(graphPriceTime);
+            ShortestPathResult resultPriceTime = routeCalcPrice.CalculateShortestPath(source, destination);
+            List<City> pathPriceTime = routeCalcTime.GetCityPath(resultPriceTime);
 
             this.SaveParcel(parcel);
 
@@ -98,8 +103,8 @@ namespace RoutePlanningCES.Controllers
 
             var bPath = new PathDTO()
             {
-                Cities = new List<CityDTO>(),
-                Duration = 42,
+                Cities = ReturnCityDtos(pathPriceTime),
+                Duration = resultPriceTime.Distance,
                 Price = 42
             };
 

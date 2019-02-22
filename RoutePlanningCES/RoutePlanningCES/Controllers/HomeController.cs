@@ -55,37 +55,5 @@ namespace RoutePlanningCES.Controllers
             };
             return View(model);
         }
-
-        public void ClickCalculate(Parcel parcel, City source, City destination)
-        {
-            IList<Edge> edges;
-            IList<City> cities;
-            using (var context = new TLContext())
-            {
-                edges = context.GetAllEdges();
-                cities = context.GetCities().ToList();
-            }
-            Graph<City, string> graphPrice = GraphFabric.CreateGraphPrice(cities, edges, "priceCost", parcel);
-            Graph<City, string> graphTime = GraphFabric.CreateGraphTime(cities, edges, "timeCost");
-
-            RouteCalculatorService routeCalcPrice = new RouteCalculatorService(graphPrice);
-            ShortestPathResult resultPrice = routeCalcPrice.CalculateShortestPath(source, destination);
-            List<City> pathPrice = routeCalcPrice.GetCityPath(resultPrice);
-
-            RouteCalculatorService routeCalcTime = new RouteCalculatorService(graphTime);
-            ShortestPathResult resultTime = routeCalcPrice.CalculateShortestPath(source, destination);
-            List<City> pathTime = routeCalcTime.GetCityPath(resultTime);
-
-            this.SaveParcel(parcel);
-        }
-
-        private void SaveParcel(Parcel parcel)
-        {
-            using (var context = new TLContext())
-            {
-                context.Parcels.Add(parcel);
-                context.SaveChangesAsync();
-            }
-        }
     }
 }

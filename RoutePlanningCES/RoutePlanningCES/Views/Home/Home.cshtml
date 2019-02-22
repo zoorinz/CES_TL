@@ -129,9 +129,12 @@
         console.log(height);
         console.log(length);
 
+        var parcelTypesToPass = parcelType.join();
+        //console.log(test);
+
         $.ajax({
             url: '/SearchResult/SearchResult',
-            data: { width: width, height: height, length: length, weight: weight, sourceCity: sourceCity, destinationCity: destinationCity, parcelType: parcelType },
+            data: { width: width, height: height, length: length, weight: weight, sourceCity: sourceCity, destinationCity: destinationCity, parcelType: parcelTypesToPass },
             dataType: 'html',
             success: function (resultedRoutes) {
                 $('#searchResultContainer').html(resultedRoutes);

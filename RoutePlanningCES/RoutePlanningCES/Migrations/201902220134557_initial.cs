@@ -30,9 +30,9 @@ namespace RoutePlanningCES.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        width = c.Single(nullable: false),
-                        height = c.Single(nullable: false),
-                        length = c.Single(nullable: false),
+                        Width = c.Single(nullable: false),
+                        Height = c.Single(nullable: false),
+                        Length = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -61,7 +61,7 @@ namespace RoutePlanningCES.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -69,22 +69,22 @@ namespace RoutePlanningCES.Migrations
                 "dbo.Parcel",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        ID = c.Int(nullable: false, identity: true),
                         DestinationCity_ID = c.Int(),
-                        Dimensions_ID = c.Int(),
-                        Reciver_ID = c.Int(),
+                        Dimensions_ID = c.Int(nullable: false),
+                        Receiver_ID = c.Int(),
                         Sender_ID = c.Int(),
                         SourceCity_ID = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.City", t => t.DestinationCity_ID)
-                .ForeignKey("dbo.Dimension", t => t.Dimensions_ID)
-                .ForeignKey("dbo.User", t => t.Reciver_ID)
+                .ForeignKey("dbo.Dimension", t => t.Dimensions_ID, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.Receiver_ID)
                 .ForeignKey("dbo.User", t => t.Sender_ID)
                 .ForeignKey("dbo.City", t => t.SourceCity_ID)
                 .Index(t => t.DestinationCity_ID)
                 .Index(t => t.Dimensions_ID)
-                .Index(t => t.Reciver_ID)
+                .Index(t => t.Receiver_ID)
                 .Index(t => t.Sender_ID)
                 .Index(t => t.SourceCity_ID);
             
@@ -93,8 +93,8 @@ namespace RoutePlanningCES.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Username = c.String(),
-                        Password = c.String(),
+                        Username = c.String(nullable: false),
+                        Password = c.String(nullable: false),
                         eMail = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
@@ -116,13 +116,13 @@ namespace RoutePlanningCES.Migrations
                 "dbo.ParcelType",
                 c => new
                     {
-                        Parcel_Id = c.Int(nullable: false),
+                        Parcel_ID = c.Int(nullable: false),
                         Type_ID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Parcel_Id, t.Type_ID })
-                .ForeignKey("dbo.Parcel", t => t.Parcel_Id, cascadeDelete: true)
+                .PrimaryKey(t => new { t.Parcel_ID, t.Type_ID })
+                .ForeignKey("dbo.Parcel", t => t.Parcel_ID, cascadeDelete: true)
                 .ForeignKey("dbo.Type", t => t.Type_ID, cascadeDelete: true)
-                .Index(t => t.Parcel_Id)
+                .Index(t => t.Parcel_ID)
                 .Index(t => t.Type_ID);
             
         }
@@ -130,10 +130,10 @@ namespace RoutePlanningCES.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.ParcelType", "Type_ID", "dbo.Type");
-            DropForeignKey("dbo.ParcelType", "Parcel_Id", "dbo.Parcel");
+            DropForeignKey("dbo.ParcelType", "Parcel_ID", "dbo.Parcel");
             DropForeignKey("dbo.Parcel", "SourceCity_ID", "dbo.City");
             DropForeignKey("dbo.Parcel", "Sender_ID", "dbo.User");
-            DropForeignKey("dbo.Parcel", "Reciver_ID", "dbo.User");
+            DropForeignKey("dbo.Parcel", "Receiver_ID", "dbo.User");
             DropForeignKey("dbo.Parcel", "Dimensions_ID", "dbo.Dimension");
             DropForeignKey("dbo.Parcel", "DestinationCity_ID", "dbo.City");
             DropForeignKey("dbo.TypeEdge", "Edge_ID", "dbo.Edge");
@@ -142,12 +142,12 @@ namespace RoutePlanningCES.Migrations
             DropForeignKey("dbo.Edge", "DestinationCity_ID", "dbo.City");
             DropForeignKey("dbo.Edge", "Company_ID", "dbo.Company");
             DropIndex("dbo.ParcelType", new[] { "Type_ID" });
-            DropIndex("dbo.ParcelType", new[] { "Parcel_Id" });
+            DropIndex("dbo.ParcelType", new[] { "Parcel_ID" });
             DropIndex("dbo.TypeEdge", new[] { "Edge_ID" });
             DropIndex("dbo.TypeEdge", new[] { "Type_ID" });
             DropIndex("dbo.Parcel", new[] { "SourceCity_ID" });
             DropIndex("dbo.Parcel", new[] { "Sender_ID" });
-            DropIndex("dbo.Parcel", new[] { "Reciver_ID" });
+            DropIndex("dbo.Parcel", new[] { "Receiver_ID" });
             DropIndex("dbo.Parcel", new[] { "Dimensions_ID" });
             DropIndex("dbo.Parcel", new[] { "DestinationCity_ID" });
             DropIndex("dbo.Edge", new[] { "SourceCity_ID" });

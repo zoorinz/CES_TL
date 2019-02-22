@@ -42,11 +42,10 @@ namespace Models
         public float MaxWeight { get; set; }
 
         //Foreign keys
-        [Required]
         public Company Company { get; set; }
-        [Required]
+
         public City SourceCity { get; set; }
-        [Required]
+       
         public City DestinationCity { get; set; }
         public ICollection<Type> Type { get; set; }
 

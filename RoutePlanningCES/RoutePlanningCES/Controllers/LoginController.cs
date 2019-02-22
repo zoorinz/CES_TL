@@ -18,12 +18,13 @@ namespace RoutePlanningCES.Controllers
 
         public bool AuthUser(string username, string password)
         {
-            if (ValidateString(username) && ValidateString(password)) ;
-            User user;
-
-            using (var context = new TLContext())
+            User user = null;
+            if (ValidateString(username) && ValidateString(password))
             {
-                user = context.GetUser(username, password);
+                using (var context = new TLContext())
+                {
+                    user = context.GetUser(username, password);
+                }
             }
             return user != null;
         }

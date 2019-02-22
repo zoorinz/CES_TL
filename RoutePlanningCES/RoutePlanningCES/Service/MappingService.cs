@@ -58,17 +58,15 @@ namespace Service
             };
         }
 
-        public static List<Edge> GetEdges()
+        public static List<Edge> GetEdges(List<City> cities)
         {
             List<Type> allowedTypes = new List<Type>()
             {
                 new Type("recordedDelivery"),
                 new Type("cautiousParcels"),
                 new Type("refridgeratedGoods"),
-                new Type("liveAnimals"),
-                new Type("")
+                new Type("liveAnimals")
             };
-            var cities = GetCities();
             List<Edge> edges = new List<Edge>()
             {
                 new Edge(480, 6, 40, cities[0], cities[1]),

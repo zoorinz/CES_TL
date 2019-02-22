@@ -27,6 +27,7 @@
     max-width: 100%;
     white-space: normal;
     transition: 0.3s;
+    width: 100%;
 }
 
 
@@ -50,5 +51,5 @@ footer p {
     background-color: #78C2AD;
 }
 .search-area .input-group {
-    margin: 5px;
+    margin-bottom: 2px;
 }

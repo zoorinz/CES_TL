@@ -18,6 +18,13 @@ namespace RoutePlanningCES.Controllers
     {
         public ActionResult Home()
         {
+            IList<Edge> edges;
+            IList<City> cities2;
+            using (var context = new TLContext())
+            {
+                edges = context.GetAllEdges();
+                cities2 = context.GetCities().ToList();
+            }
             var cities = MappingService.GetCities();
             var dtoCities = new List<CityDTO>();
             foreach (var city in cities)
